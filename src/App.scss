@@ -1,0 +1,103 @@
+// Fonts
+@font-face {
+  font-family: 'Century Gothic Regular';
+  src: font-url('./assets/fonts/CenturyGothicRegular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Century Gothic Bold';
+  src: font-url('./assets/fonts/CenturyGothicBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardePro-Bk';
+  src: font-url('./assets/fonts/ITCAvantGardePro-Bk.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardePro-Demi';
+  src: font-url('./assets/fonts/ITCAvantGardePro-Demi.otf') format('opentype');
+}
+
+$primaryFont: 'ITCAvantGardePro-Bk';
+$secondaryFont: 'Century Gothic';
+$primaryFontBold: 'ITCAvantGardePro-Demi';
+$secondaryFontBold: 'Century Gothic Bold';
+
+// Colors
+$gold: #D3BD83;
+$white: #f7f7f7;
+$inputWhite: #C7C7CD;
+$placeholderWhite: #8C8C8C;
+$lightGrey: #3A4045;
+$darkGrey: #202326;
+$black: #131313;
+
+.NavBar-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1.4rem 1rem;
+  background-color: $black;
+}
+
+.NavBar-logo {
+  position: absolute;
+  max-height: 20px;
+  left: 2rem;
+}
+
+.NavBar-links {
+  margin: auto;
+
+  a {
+    color: $white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-family: $primaryFont;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 22px;
+  }
+}
+
+.section-header {
+  margin-left: 32px;
+  color: $white;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
