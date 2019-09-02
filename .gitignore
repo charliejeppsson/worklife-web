@@ -11,6 +11,11 @@
 # production
 /build
 
+# Ignore temporary vim files
+*~
+*.swp
+*.swo
+
 # misc
 .DS_Store
 .env.local
