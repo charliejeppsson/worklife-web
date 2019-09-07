@@ -1,11 +1,9 @@
 import React from 'react'
 
-function BenefitsHome() {
+export default function BenefitsHome() {
   return (
-    <div class="body__container">
-      <h1 class="section-header">Benefits</h1>
+    <div>
+      <h1>BENEFITS</h1>
     </div>
   )
 }
-
-export default BenefitsHome

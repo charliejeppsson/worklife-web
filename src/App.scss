@@ -30,13 +30,15 @@ $secondaryFontBold: 'Century Gothic Bold';
 $logoFont: 'Permanent Marker', cursive;
 
 // Colors
-$gold: #D3BD83;
-$white: #f7f7f7;
+$white: #F7F7F7;
 $inputWhite: #C7C7CD;
 $placeholderWhite: #8C8C8C;
 $lightGrey: #3A4045;
 $darkGrey: #202326;
 $black: #131313;
+$yellow: #FFBD30;
+$purple: #6801C5;
+$turqoise: #0FA99A;
 
 
 // GENERAL --------------------------------------------------------------------
@@ -82,7 +84,7 @@ a {
   &__links {
     a {
       // margin-right: 30px;
-      font-family: $logoFont;
+      font-family: $primaryFont;
       font-size: 18px;
       font-weight: 600;
       letter-spacing: 1px;
@@ -104,10 +106,6 @@ a {
     display: flex;
     justify-content: space-around;
 
-  a {
-    color: $white;
-    margin-right: 20px;
-    text-decoration: none;
     a {
       font-size: 14px;
     }
@@ -143,18 +141,186 @@ a {
     }
   }
 }
+
+// BODY -----------------------------------------------------------------------
+
+.body {
+  &__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     font-family: $primaryFont;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    line-height: 22px;
+    margin-top: 50px;
   }
 }
 
 .section-header {
   margin-left: 32px;
-  color: $white;
 }
+
+
+// COMMUNITY ------------------------------------------------------------------
+
+.NewsList {
+  &__container {
+
+  }
+
+  &__list {
+
+  }
+}
+
+.NewsListItem {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  width: 600px;
+  margin-bottom: 65px;
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+
+    img {
+      max-width: 250px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    span {
+      position: absolute;
+      align-self: flex-end;
+      padding: 3px;
+      font-size: 10px;
+      width: 250px;
+      margin: 0 0 5px 5px;
+    }
+  }
+
+  &__content {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__top-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .created-at {
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+
+    h2 {
+      margin-bottom: 5px;
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    &__description {
+      width: 100%;
+
+      p {
+        margin-top: 0;
+        max-height: 58px;
+        overflow: hidden;
+      }
+    }
+
+    &__details {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 15px !important;
+      }
+
+      p {
+        margin: 5px 0 0 8px;
+        font-size: 14px;
+      }
+    }
+
+    &__attendants {
+      display: flex;
+      padding-left: 10px;
+      margin-top: 5px;
+
+      img {
+        border-radius: 50px;
+        width: 30px;
+        height: 30px;
+        margin-left: -10px;
+        object-fit: cover;
+        box-shadow: -1px 0 3px $black;
+      }
+    }
+
+    &__author {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+
+      .author-image {
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .author-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 14px;
+        margin-left: 10px;
+
+        .author-name {
+          font-family: $primaryFontBold;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+
+// Utility components
+
+.Tag {
+  &__container {
+    border-radius: 5px;
+    padding: 3px;
+    max-height: 12px;
+    margin-left: 10px;
+
+    &--event {
+      background-color: $yellow;
+    }
+
+    &--collab {
+      background-color: $purple;
+    }
+
+    &--news {
+      background-color: $turqoise;
+    }
+
+    p {
+      font-size: 12px;
+      color: $black !important;
+      margin: 0;
+    }
+  }
+}
+
+
+
 
 .App {
   text-align: center;
