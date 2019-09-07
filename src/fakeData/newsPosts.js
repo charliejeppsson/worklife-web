@@ -1,7 +1,7 @@
 // Joint table between a user and either an event, a news post or collab
 export default [
   {
-    id: 6,
+    id: 8,
     title: 'Café Indigo just joined the club',
     description: "Unless you've been living in a cave for the past seven years, odds are you've already heard about these guys. They're the best...",
     content: "Unless you've been living in a cave for the past seven years, odds are you've already heard about these guys. They're the best in the biz, and they just decided to get even better - by deciding to join Wörklife! Their beautiful aok doors are open to you for your daily grind from 9-5, 7 days a week.",
@@ -16,7 +16,7 @@ export default [
     updatedAt: '2019-09-03T13:45:00'
   },
   {
-    id: 4,
+    id: 7,
     title: 'Get inspired by the one and only Gavin Belson',
     description: 'Wörklife members have been blessed with an exclusive opportunity to learn all abo...',
     content: 'The time is once again upon us to share, learn, laugh and perhaps even cry a little together, basking in the bliss the is React. The speakers this time is.',
@@ -31,7 +31,7 @@ export default [
     updatedAt: '2019-09-06T12:55:00'
   },
   {
-    id: 7,
+    id: 6,
     title: 'Epic designers wanted',
     description: "Our agency just caught a big fish and need experienced designers ASAP...",
     content: 'The time is once again upon us to share, learn, laugh and perhaps even cry a little together, basking in the bliss the is React. The speakers this time is.',
@@ -61,7 +61,7 @@ export default [
     updatedAt: '2019-09-06T18:55:00'
   },
   {
-    id: 3,
+    id: 4,
     title: 'Please give it up for restaurant Artsy',
     description: 'Describing article here, real good article.',
     content:
@@ -79,7 +79,7 @@ export default [
     updatedAt: '2019-09-01T10:30:00'
   },
   {
-    id: 7,
+    id: 3,
     title: 'Open-source maintainers needed',
     description: "Our agency just caught a big fintech fish for a large-scale project and...",
     content: 'The time is once again upon us to share, learn, laugh and perhaps even cry a little together, basking in the bliss the is React. The speakers this time is.',
