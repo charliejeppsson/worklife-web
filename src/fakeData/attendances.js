@@ -62,7 +62,28 @@ export default [
   },
   {
     id: 9,
+    userId: 5,
+    eventId: 2,
+    createdAt: '2019-09-05T15:20:00',
+    updatedAt: '2019-09-05T15:20:00'
+  },
+  {
+    id: 10,
+    userId: 4,
+    eventId: 2,
+    createdAt: '2019-09-05T15:20:00',
+    updatedAt: '2019-09-05T15:20:00'
+  },
+  {
+    id: 11,
     userId: 7,
+    eventId: 2,
+    createdAt: '2019-09-05T15:20:00',
+    updatedAt: '2019-09-05T15:20:00'
+  },
+  {
+    id: 12,
+    userId: 1,
     eventId: 2,
     createdAt: '2019-09-05T15:20:00',
     updatedAt: '2019-09-05T15:20:00'
@@ -70,14 +91,14 @@ export default [
 
   // Mandarin 101
   {
-    id: 10,
+    id: 13,
     userId: 10,
     eventId: 3,
     createdAt: '2019-09-05T15:20:00',
     updatedAt: '2019-09-05T15:20:00'
   },
   {
-    id: 11,
+    id: 14,
     userId: 6,
     eventId: 3,
     createdAt: '2019-09-05T15:20:00',
