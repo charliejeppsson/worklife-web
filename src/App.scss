@@ -54,7 +54,7 @@ a {
 
 // UTILITIES ------------------------------------------------------------------
 .text-underscore {
-  text-decoration: underline !important;
+  border-bottom: solid;
 }
 
 .hidden {
@@ -70,25 +70,24 @@ a {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1rem;
+    padding: 20px 30px;
     margin-bottom: 20px;
     background-color: $black;
   }
 
   &__logo {
-    max-height: 25px;
-    left: 2rem;
+    max-width: 170px;
     margin-bottom: 5px;
   }
 
   &__links {
     a {
-      // margin-right: 30px;
       font-family: $primaryFont;
       font-size: 18px;
       font-weight: 600;
       letter-spacing: 1px;
-      line-height: 22px;
+      line-height: 16px;
+      margin-bottom: 5px;
     }
   }
 
@@ -112,6 +111,8 @@ a {
   }
 
   &__avatar {
+    padding-left: 130px;
+
     img {
       border-radius: 50px;
       width: 40px;
@@ -167,7 +168,7 @@ a {
   }
 
   &__list {
-
+    padding-left: 0;
   }
 }
 
@@ -175,17 +176,17 @@ a {
   display: flex;
   flex-direction: row;
   height: 200px;
-  width: 600px;
+  width: 640px;
   margin-bottom: 65px;
 
   &__image {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 250px;
+    min-width: 270px;
 
     img {
-      max-width: 250px;
+      max-width: 270px;
       height: 200px;
       object-fit: cover;
     }
@@ -195,7 +196,7 @@ a {
       align-self: flex-end;
       padding: 3px;
       font-size: 10px;
-      width: 250px;
+      width: 270px;
       margin: 0 0 5px 5px;
     }
   }

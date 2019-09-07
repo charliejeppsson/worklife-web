@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import logoHorizontal from '../assets/images/worklife-logo-1.png'
+import logoHorizontal from '../assets/images/worklife-logo-2.png'
 
 const currentUser = {
   firstName: 'Charlie',
