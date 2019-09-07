@@ -1,4 +1,8 @@
+// VARIABLES ------------------------------------------------------------------
+
 // Fonts
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+
 @font-face {
   font-family: 'Century Gothic Regular';
   src: font-url('./assets/fonts/CenturyGothicRegular.ttf') format('truetype');
@@ -23,6 +27,7 @@ $primaryFont: 'ITCAvantGardePro-Bk';
 $secondaryFont: 'Century Gothic';
 $primaryFontBold: 'ITCAvantGardePro-Demi';
 $secondaryFontBold: 'Century Gothic Bold';
+$logoFont: 'Permanent Marker', cursive;
 
 // Colors
 $gold: #D3BD83;
@@ -33,28 +38,111 @@ $lightGrey: #3A4045;
 $darkGrey: #202326;
 $black: #131313;
 
-.NavBar-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 1.4rem 1rem;
-  background-color: $black;
+
+// GENERAL --------------------------------------------------------------------
+
+h1, h2, p, a, span, div {
+  color: $white !important;
+  font-family: $primaryFont;
 }
 
-.NavBar-logo {
-  position: absolute;
-  max-height: 20px;
-  left: 2rem;
+a {
+  text-decoration: none;
 }
 
-.NavBar-links {
-  margin: auto;
+// UTILITIES ------------------------------------------------------------------
+.text-underscore {
+  text-decoration: underline !important;
+}
+
+.hidden {
+  display: none;
+}
+
+
+// NAVBAR ---------------------------------------------------------------------
+
+.NavBar {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    margin-bottom: 20px;
+    background-color: $black;
+  }
+
+  &__logo {
+    max-height: 25px;
+    left: 2rem;
+    margin-bottom: 5px;
+  }
+
+  &__links {
+    a {
+      // margin-right: 30px;
+      font-family: $logoFont;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      line-height: 22px;
+    }
+  }
+
+  &__primary-links {
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    margin-bottom: 5px;
+  }
+
+
+  &__secondary-links {
+    position: absolute;
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
 
   a {
     color: $white;
     margin-right: 20px;
     text-decoration: none;
+    a {
+      font-size: 14px;
+    }
+  }
+
+  &__avatar {
+    img {
+      border-radius: 50px;
+      width: 40px;
+      height: 40px;
+    }
+
+    a {
+      max-height: 40px;
+    }
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: 15px;
+    height: 130px;
+    width: 110px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: $darkGrey;
+
+    a {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+  }
+}
     font-family: $primaryFont;
     font-size: 14px;
     font-weight: 600;
