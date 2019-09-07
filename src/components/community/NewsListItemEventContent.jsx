@@ -32,7 +32,7 @@ export default function NewsListItemEventContent(props) {
 
   const formatEventDate = date => {
     const dateObject = new Date(date)
-    return moment(dateObject).format('h:mm a MMMM Do')
+    return moment(dateObject).format('h:mm a MMM Do')
   }
 
   return (
