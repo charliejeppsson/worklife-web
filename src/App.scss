@@ -119,8 +119,10 @@ a {
       height: 40px;
     }
 
-    a {
-      max-height: 40px;
+    button {
+      background-color: transparent;
+      border-color: transparent;
+      cursor: pointer;
     }
   }
 

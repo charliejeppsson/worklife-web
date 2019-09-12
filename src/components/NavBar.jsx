@@ -123,7 +123,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <nav className="NavBar__container">
-        <img className="NavBar__logo" src={logoHorizontal} />
+        <img className="NavBar__logo" src={logoHorizontal} alt="Logo"/>
 
         <div className="NavBar__links">
           {this.renderPrimaryNav()}
@@ -132,9 +132,9 @@ class NavBar extends React.Component {
         </div>
 
         <div className="NavBar__avatar">
-          <a href="#" onClick={() => this.toggleDropdownMenu()}>
-            <img src={currentUser.avatar} />
-          </a>
+          <button onClick={() => this.toggleDropdownMenu()}>
+            <img src={currentUser.avatar} alt="Current user"/>
+          </button>
         </div>
 
         {this.state.showDropdownMenu ? (
