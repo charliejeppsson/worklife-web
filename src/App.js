@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import ApolloClient, { gql } from 'apollo-boost'
+import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from '@apollo/react-hooks'
-import { useQuery } from '@apollo/react-hooks'
 
 import './App.scss'
 import Header from './components/Header'
