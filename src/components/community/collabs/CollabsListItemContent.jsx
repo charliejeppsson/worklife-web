@@ -8,16 +8,16 @@ export default function NewsListItemEventContent(props) {
 
   const defaultAvatarUrl = 'https://res.cloudinary.com/charliejeppsson/image/upload/v1567786133/avatar-placeholder_lf2gzx.png'
   
-  const collabParticipants = () => {
-    return collab.participations.map((p) => {
-      return <img
+  const collabParticipants = () => (
+    collab.participations.map((p) => (
+      <img
         key={p.user.id}
         src={p.user.avatar || defaultAvatarUrl}
-        title={p.user.firstName + ' ' + p.user.lastName}
-        alt="attendant photo"
+        title={p.user.firstName + ' ' + (p.user.lastName || '')}
+        alt="Participant"
        />
-    })
-  }
+    ))
+  )
 
   return (
     <div>

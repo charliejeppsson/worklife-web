@@ -1,9 +1,9 @@
 import React from 'react'
 import moment from 'moment'
 
-import NewsListItemEventContent from './NewsListItemEventContent'
-import NewsListItemCollabContent from './NewsListItemCollabContent'
-import Tag from '../Tag'
+import EventsListItemContent from '../events/EventsListItemContent'
+import CollabsListItemContent from '../collabs/CollabsListItemContent'
+import Tag from '../../Tag'
 
 export default function NewsListItem(props) {
   const { newsPost } = props
@@ -18,7 +18,7 @@ export default function NewsListItem(props) {
   return (
     <li className="NewsListItem">
       <div className="NewsListItem__image">
-        <img src={newsPost.image.url} />
+        <img src={newsPost.image.url} alt="News"/>
         {newsPost.image.info ? <span>{newsPost.image.info}</span> : null}
       </div>
       <div className="NewsListItem__content">
@@ -30,13 +30,9 @@ export default function NewsListItem(props) {
             {!newsPost.eventId && !newsPost.collabId ? <Tag title="News" /> : null}
           </div>
           <h2>{newsPost.title}</h2>
-          {
-            !newsPost.eventId ?
-              <p className="NewsListItem__content__description">
-                {newsPost.description}
-              </p>
-              : null
-          }
+          <p className="NewsListItem__content__description">
+            {newsPost.description}
+          </p>
         </div>
         
         { // If regular news post
@@ -46,6 +42,7 @@ export default function NewsListItem(props) {
                 className="author-image"
                 src={newsPost.user.avatar || defaultAvatarUrl}
                 title={newsPost.user.firstName + ' ' + newsPost.user.lastName}
+                alt="Author"
               />
               <div className="author-info">
                 <span className="author-name">
@@ -59,8 +56,8 @@ export default function NewsListItem(props) {
             : null
         }
 
-        {newsPost.eventId ? <NewsListItemEventContent event={newsPost.event} /> : null}
-        {newsPost.collabId ? <NewsListItemCollabContent collab={newsPost.collab}/> : null}
+        {newsPost.eventId ? <EventsListItemContent event={newsPost.event} /> : null}
+        {newsPost.collabId ? <CollabsListItemContent collab={newsPost.collab}/> : null}
       </div>
     </li>
   )

@@ -4,22 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 
-export default function NewsListItemEventContent(props) {
+export default function EventListItemContent(props) {
   const { event } = props
 
   const defaultAvatarUrl = 'https://res.cloudinary.com/charliejeppsson/image/upload/v1567786133/avatar-placeholder_lf2gzx.png'
 
-  const eventAttendants = () => {
-    const attendants = event.attendances.map((a) => a.user)
-    return attendants.map((attendant) => (
+  const eventAttendants = () => (
+    event.attendances.map((a) => (
       <img
-        key={attendant.id}
-        src={attendant.avatar || defaultAvatarUrl}
-        title={attendant.firstName + ' ' + (attendant.lastName || '')}
-        alt="attendant photo"
+        key={a.user.id}
+        src={a.user.avatar || defaultAvatarUrl}
+        title={a.user.firstName + ' ' + (a.user.lastName || '')}
+        alt="Attendant"
        />
     ))
-  } 
+  )
 
   const formatEventDate = date => {
     const dateObject = new Date(date)
