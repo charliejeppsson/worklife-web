@@ -9,7 +9,7 @@ const currentUser = {
     'https://res.cloudinary.com/convendum/image/upload/v1564926762/p98utcvtcuxfsqopqcse.jpg'
 }
 
-class NavBar extends React.Component {
+export default class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -50,7 +50,7 @@ class NavBar extends React.Component {
           onClick={() => this.setState(state => ({ activeNav: '/community' }))}
           activeClassName="text-underscore"
         >
-          COMMUNITY
+          Community
         </NavLink>
 
         <NavLink
@@ -58,7 +58,7 @@ class NavBar extends React.Component {
           onClick={() => this.setState(state => ({ activeNav: '/spaces' }))}
           activeClassName="text-underscore"
         >
-          SPACES
+          Spaces
         </NavLink>
 
         <NavLink
@@ -66,7 +66,7 @@ class NavBar extends React.Component {
           onClick={() => this.setState(state => ({ activeNav: 'benefits' }))}
           activeClassName="text-underscore"
         >
-          BENEFITS
+          Benefits
         </NavLink>
       </div>
     )
@@ -80,21 +80,21 @@ class NavBar extends React.Component {
           isActive={(match, location) => this.isNewsNavActive(match, location)}
           activeClassName="text-underscore"
         >
-          NEWS
+          News
         </NavLink> 
 
         <NavLink
           to="/community/events"
           activeClassName="text-underscore"
         >
-          EVENTS
+          Events
         </NavLink> 
 
         <NavLink
           to="/community/collabs"
           activeClassName="text-underscore"
         >
-          COLLABS
+          Collabs
         </NavLink> 
       </div>
     )
@@ -107,14 +107,14 @@ class NavBar extends React.Component {
           to="/spaces/new-booking"
           activeClassName="text-underscore"
         >
-          BOOK SPACES
+          Book spaces
         </NavLink> 
 
         <NavLink
           to="/spaces/my-bookings"
           activeClassName="text-underscore"
         >
-          MY BOOKINGS
+          My bookings
         </NavLink> 
       </div>
     )
@@ -147,5 +147,3 @@ class NavBar extends React.Component {
     )
   }
 }
-
-export default NavBar
