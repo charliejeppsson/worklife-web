@@ -179,7 +179,13 @@ a {
   flex-direction: row;
   height: 220px;
   width: 640px;
-  margin-bottom: 65px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 5px;
+
+  &:hover {
+		background-color: $darkGrey;
+	}
 
   &__image {
     display: flex;
@@ -264,35 +270,80 @@ a {
         box-shadow: -1px 0 3px $black;
       }
     }
-
-    &__author {
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 5px;
-
-      .author-image {
-        border-radius: 50px;
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-      }
-
-      .author-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        font-size: 14px;
-        margin-left: 10px;
-
-        .author-name {
-          font-family: $primaryFontBold;
-          font-size: 16px;
-        }
-      }
-    }
   }
 }
 
+.NewsDetails {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__hero {
+    position: relative;
+
+    &__title-background {
+      position: absolute;
+      height: 500px;
+      width: 100vw;
+      background-color: $black;
+      opacity: 0.5;
+    }
+
+    &__title {
+      position: absolute;
+      top: 200px;
+      width: 100vw;
+      text-align: center;
+      font-size: 44px;
+    }
+
+    img {
+      width: 100vw;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    width: 600px;
+  }
+
+  &__timestamp {
+    font-style: italic;
+  }
+}
+
+
+.ContentSignature {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+  }
+
+  &__image {
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
+  &__name {
+    font-family: $primaryFontBold;
+    font-size: 16px;
+  }
+}
 
 // Utility components
 
@@ -322,7 +373,6 @@ a {
     }
   }
 }
-
 
 
 
