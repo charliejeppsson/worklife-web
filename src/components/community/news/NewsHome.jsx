@@ -11,7 +11,6 @@ export default function NewsHome() {
         id
         title
         description
-        content
         createdAt
         userId
         user {
@@ -64,8 +63,8 @@ export default function NewsHome() {
     }
   `)
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error :(</p>
 
   return (
     <div className="body__container">

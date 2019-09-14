@@ -18,7 +18,7 @@ export default function NewsListItem(props) {
   return (
     <Link to={{
       pathname: "/community/news/" + newsPost.id,
-      state: { newsPost }
+      state: { newsPostId: newsPost.id }
     }}>
       <li className="NewsListItem">
         <div className="NewsListItem__image">
