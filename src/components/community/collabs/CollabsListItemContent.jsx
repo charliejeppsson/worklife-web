@@ -1,7 +1,5 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
-import { faClock } from '@fortawesome/free-solid-svg-icons'
+import CollabInfo from './CollabInfo'
 
 export default function NewsListItemEventContent(props) {
   const { collab } = props
@@ -21,15 +19,7 @@ export default function NewsListItemEventContent(props) {
 
   return (
     <div>
-      <div className="NewsListItem__content__details">
-        <FontAwesomeIcon icon={faClock} />
-        <p>{collab.duration}</p>
-      </div>
-
-      <div className="NewsListItem__content__details">
-        <FontAwesomeIcon icon={faDollarSign} />
-        <p>{collab.compensation}</p>
-      </div>
+      <CollabInfo collab={collab} />
 
       <div className="NewsListItem__content__attendants">
         {collabParticipants()}
