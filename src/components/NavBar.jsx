@@ -23,14 +23,9 @@ export default class NavBar extends React.Component {
   }
 
   isNewsNavActive(match, location) {
-    switch (location.pathname) {
-      case '/':
-      case '/community':
-      case '/community/news':
-        return true
-      default:
-        return false
-    }
+    return location.pathname === '/' ||
+      location.pathname === '/community' ||
+      location.pathname.slice(0, 15) === '/community/news'
   }
 
   showCommunitySubNav() {
