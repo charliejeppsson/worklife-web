@@ -55,6 +55,7 @@ export default function CollabDetails(props) {
   )
 
   return (
+    <div className="body__container">
       <div className="NewsDetails__container">
         <div className="NewsDetails__hero">
           <div className="NewsDetails__hero__title-background"></div>
@@ -77,5 +78,6 @@ export default function CollabDetails(props) {
           {renderParticipationsList(data.collab.participations)}
         </div>
       </div>
+    </div>
   )
 }

@@ -75,20 +75,22 @@ export default function NewsDetails(props) {
   )
 
   return (
-    <div className="NewsDetails__container">
-      <div className="NewsDetails__hero">
-        <div className="NewsDetails__hero__title-background"></div>
-        <h1 className="NewsDetails__hero__title">{data.newsPost.title}</h1> 
-        <img src={data.newsPost.image.url} alt={data.newsPost.title} />
-      </div>
+    <div className="body__container">
+      <div className="NewsDetails__container">
+        <div className="NewsDetails__hero">
+          <div className="NewsDetails__hero__title-background"></div>
+          <h1 className="NewsDetails__hero__title">{data.newsPost.title}</h1> 
+          <img src={data.newsPost.image.url} alt={data.newsPost.title} />
+        </div>
 
-      <div className="NewsDetails__content">
-        <p className="NewsDetails__timestamp">
-          {formatTimestamp(data.newsPost.createdAt)}
-        </p>
-        <p>{data.newsPost.content}</p> 
+        <div className="NewsDetails__content">
+          <p className="NewsDetails__timestamp">
+            {formatTimestamp(data.newsPost.createdAt)}
+          </p>
+          <p>{data.newsPost.content}</p> 
 
-        <ContentSignature user={data.newsPost.user} />
+          <ContentSignature user={data.newsPost.user} />
+        </div>
       </div>
     </div>
   )
