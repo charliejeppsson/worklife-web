@@ -45,8 +45,6 @@ export default function EventDetails(props) {
     }
   `)
 
-  console.log('DATA: ', data)
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
