@@ -9,6 +9,7 @@ import CommunityHome from './components/community/CommunityHome'
 import NewsHome from './components/community/news/NewsHome'
 import NewsDetails from './components/community/news/NewsDetails'
 import EventsHome from './components/community/events/EventsHome'
+import EventDetails from './components/community/events/EventDetails'
 import CollabsHome from './components/community/collabs/CollabsHome'
 import SpacesHome from './components/spaces/SpacesHome'
 import NewBookingHome from './components/spaces/NewBookingHome'
@@ -34,6 +35,7 @@ export default function App() {
         <Route exact path="/community/collabs" component={CollabsHome} />
 
         <Route exact path="/spaces" component={SpacesHome} />
+        <Route path="/community/events/:id" component={EventDetails} />
         <Route path="/spaces/new-booking" component={NewBookingHome} />
         <Route path="/spaces/my-bookings" component={MyBookingsHome} />
 

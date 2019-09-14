@@ -309,6 +309,11 @@ a {
 
   &__content {
     width: 600px;
+
+    h2 {
+      margin-top: 30px;
+      margin-bottom: 5px;
+    }
   }
 
   &__timestamp {
@@ -322,6 +327,7 @@ a {
     display: flex;
     flex-direction: row;
     margin-bottom: 5px;
+    margin-top: 15px;
   }
 
   &__image {
