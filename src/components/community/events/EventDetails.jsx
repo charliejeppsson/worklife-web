@@ -7,7 +7,7 @@ import ContentSignature from '../../ContentSignature'
 import EventInfo from './EventInfo'
 
 export default function EventDetails(props) {
-  const eventId = useState(props.location.state.event.id)[0]
+  const eventId = useState(props.location.state.eventId)[0]
 
   const { loading, error, data } = useQuery(gql`
     {

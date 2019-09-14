@@ -15,7 +15,7 @@ export default function EventsListItem(props) {
   return (
     <Link to={{
       pathname: "/community/events/" + event.id,
-      state: { event }
+      state: { eventId: event.id }
     }}>
       <li className="NewsListItem">
         <div className="NewsListItem__image">
