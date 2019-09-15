@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
 import CollabsList from './CollabsList'
+import LoadingSpinner from '../../LoadingSpinner'
 
 export default function CollabsHome() {
   const { loading, error, data } = useQuery(gql`
@@ -36,12 +37,11 @@ export default function CollabsHome() {
     }
   `)
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
   return (
     <div className="body__container">
-      <CollabsList collabs={data.collabs} />
+      {loading ? <LoadingSpinner /> : <CollabsList collabs={data.collabs} />}
     </div>
   )
 }

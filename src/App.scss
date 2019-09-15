@@ -323,6 +323,7 @@ a {
 }
 
 
+// Global components ----------------------------------------------------------
 .ContentSignature {
   &__container {
     display: flex;
@@ -352,7 +353,31 @@ a {
   }
 }
 
-// Utility components
+.LoadingSpinner {
+  &__container {
+    height: 500px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: 50px;
+      color: $yellow;
+      animation: LoadingSpinner--spin infinite 3s linear;
+      pointer-events: none;
+    }
+  }
+
+  @keyframes LoadingSpinner--spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// Utility components ---------------------------------------------------------
 
 .Tag {
   &__container {
@@ -387,12 +412,6 @@ a {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -402,17 +421,4 @@ a {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

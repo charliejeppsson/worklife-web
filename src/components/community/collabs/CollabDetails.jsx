@@ -5,6 +5,7 @@ import moment from 'moment'
 
 import ContentSignature from '../../ContentSignature'
 import CollabInfo from './CollabInfo'
+import LoadingSpinner from '../../LoadingSpinner'
 
 export default function CollabDetails(props) {
   const collabId = useState(props.location.state.collabId)[0]
@@ -41,7 +42,6 @@ export default function CollabDetails(props) {
     }
   `)
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
   const formatTimestamp = (date) => (
@@ -56,28 +56,31 @@ export default function CollabDetails(props) {
 
   return (
     <div className="body__container">
-      <div className="NewsDetails__container">
-        <div className="NewsDetails__hero">
-          <div className="NewsDetails__hero__title-background"></div>
-          <h1 className="NewsDetails__hero__title">{data.collab.title}</h1> 
-          <img src={data.collab.image.url} alt={data.collab.title} />
-        </div>
+      {
+        loading ? <LoadingSpinner />
+        : <div className="NewsDetails__container">
+            <div className="NewsDetails__hero">
+              <div className="NewsDetails__hero__title-background"></div>
+              <h1 className="NewsDetails__hero__title">{data.collab.title}</h1> 
+              <img src={data.collab.image.url} alt={data.collab.title} />
+            </div>
 
-        <div className="NewsDetails__content">
-          <p className="NewsDetails__timestamp">
-            {formatTimestamp(data.collab.createdAt)}
-          </p>
-          <p>{data.collab.description}</p> 
+            <div className="NewsDetails__content">
+              <p className="NewsDetails__timestamp">
+                {formatTimestamp(data.collab.createdAt)}
+              </p>
+              <p>{data.collab.description}</p> 
 
-          <CollabInfo collab={data.collab} />
+              <CollabInfo collab={data.collab} />
 
-          <h2>Initiator</h2>
-          <ContentSignature key={data.collab.user.id} user={data.collab.user} />
-          
-          <h2>Participants</h2>
-          {renderParticipationsList(data.collab.participations)}
-        </div>
-      </div>
+              <h2>Initiator</h2>
+              <ContentSignature key={data.collab.user.id} user={data.collab.user} />
+              
+              <h2>Participants</h2>
+              {renderParticipationsList(data.collab.participations)}
+            </div>
+          </div>
+      }
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
 import EventsList from './EventsList'
+import LoadingSpinner from '../../LoadingSpinner'
 
 export default function EventsHome() {
   const { loading, error, data } = useQuery(gql`
@@ -40,12 +41,11 @@ export default function EventsHome() {
     }
   `)
 
-  if (loading) return <p>Loading...</p>
   if (error) return <p>Error :(</p>
 
   return (
     <div className="body__container">
-      <EventsList events={data.events} />
+      {loading ? <LoadingSpinner /> : <EventsList events={data.events} />}
     </div>
   )
 }
