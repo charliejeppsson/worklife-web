@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import AuthContext from './context/authContext'
 
 import './App.scss'
@@ -8,17 +8,9 @@ import LoadingSpinner from './components/LoadingSpinner'
 import Header from './components/Header'
 import StartHome from './components/start/StartHome'
 import CommunityHome from './components/community/CommunityHome'
-import NewsHome from './components/community/news/NewsHome'
-import NewsDetails from './components/community/news/NewsDetails'
-import EventsHome from './components/community/events/EventsHome'
-import EventDetails from './components/community/events/EventDetails'
-import CollabsHome from './components/community/collabs/CollabsHome'
-import CollabDetails from './components/community/collabs/CollabDetails'
-import SpacesHome from './components/spaces/SpacesHome'
-import NewBookingHome from './components/spaces/NewBookingHome'
-import MyBookingsHome from './components/spaces/MyBookingsHome'
-import BenefitsHome from './components/benefits/BenefitsHome'
-import AccountHome from './components/account/AccountHome'
+import CommunityRoutes from './routes/CommunityRoutes'
+import SpacesRoutes from './routes/SpacesRoutes'
+import BenefitsRoutes from './routes/BenefitsRoutes'
 
 export default class App extends Component {
   constructor(props) {
@@ -78,7 +70,7 @@ export default class App extends Component {
       )
     } else {
       return (
-        <Router>
+        <BrowserRouter>
           <AuthContext.Provider value={{
             currentUser,
             login: this.handleLogin,
@@ -90,25 +82,10 @@ export default class App extends Component {
                   <React.Fragment>
                     <Header />
                     <Redirect from="/login" to="/" exact />
-
                     <Route exact path="/" component={CommunityHome} />
-                    <Route path="/community" component={CommunityHome} />
-                    <Route path="/community/news" component={NewsHome} />
-                    <Route path="/community/news/:id" component={NewsDetails} />
-
-                    <Route exact path="/community/events" component={EventsHome} />
-                    <Route exact path="/community/events/:id" component={EventDetails} />
-                    
-                    <Route exact path="/community/collabs" component={CollabsHome} />
-                    <Route exact path="/community/collabs/:id" component={CollabDetails} />
-
-                    <Route exact path="/spaces" component={SpacesHome} />
-                    <Route exact path="/spaces/new-booking" component={NewBookingHome} />
-                    <Route exact path="/spaces/my-bookings" component={MyBookingsHome} />
-
-                    <Route exact path="/benefits" component={BenefitsHome} />
-                    <Route exact path="/account" component={AccountHome} />
-                    <Route exact path="/logout" component={AccountHome} />
+                    <CommunityRoutes />
+                    <SpacesRoutes />
+                    <BenefitsRoutes />
                   </React.Fragment>
                 ) : (
                   <React.Fragment>
@@ -119,7 +96,7 @@ export default class App extends Component {
               }
             </Switch>  
           </AuthContext.Provider>
-        </Router>
+        </BrowserRouter>
       )
     }
   }
