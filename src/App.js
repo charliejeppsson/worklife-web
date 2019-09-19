@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import AuthContext from './context/authContext'
-import gql from 'graphql-tag'
 
 import './App.scss'
+import { CURRENT_USER, LOGIN, LOGOUT } from './graphql/constants'
 import LoadingSpinner from './components/LoadingSpinner'
 import Header from './components/Header'
 import StartHome from './components/start/StartHome'
@@ -23,7 +23,6 @@ import AccountHome from './components/account/AccountHome'
 export default class App extends Component {
   constructor(props) {
     super(props)
-    console.log('PROPS: ', props)
 
     this.state = {
       currentUser: {},
@@ -36,22 +35,9 @@ export default class App extends Component {
     this.getCurrentUser()
   }
 
-  getCurrentUser() {
+  getCurrentUser = () => {
     const { client } = this.props
-    client.query({
-      query: gql`
-        {
-          currentUser {
-            id
-            firstName
-            lastName
-            email
-            title
-            avatar
-          }
-        }
-      `
-    })
+    client.query({ query: CURRENT_USER })
       .then(res => {
         console.log('currentUser from currentUser query: ', res.data.currentUser)
         this.setState({
@@ -64,23 +50,7 @@ export default class App extends Component {
   handleLogin = (email, password) => {
     this.setState({ loading: true })
     const { client } = this.props
-    client.mutate({
-      variables: { email, password },
-      mutation: gql`
-        mutation login($email: String!, $password: String!) {
-          login(email: $email, password: $password) {
-            user {
-              id
-              firstName
-              lastName
-              email
-              title
-              avatar
-            }
-          }
-        }
-      `
-    })
+    client.mutate({ variables: { email, password }, mutation: LOGIN })
       .then(res => {
         console.log('currentUser from login mutation: ', res.data.login.user)
         this.setState({ currentUser: res.data.login.user, loading: false })
@@ -90,22 +60,7 @@ export default class App extends Component {
   handleLogout = () => {
     this.setState({ loading: true })
     const { client } = this.props
-    client.mutate({
-      mutation: gql`
-        mutation logout {
-          logout {
-            user {
-              id
-              firstName
-              lastName
-              email
-              title
-              avatar
-            }
-          }
-        }
-      `
-    })
+    client.mutate({ mutation: LOGOUT })
       .then(res => {
         console.log('currentUser from logout mutation: ', res.data.logout.user)
         this.setState({ currentUser: res.data.logout.user, loading: false })
