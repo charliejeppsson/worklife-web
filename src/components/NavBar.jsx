@@ -1,13 +1,8 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import logoHorizontal from '../assets/images/worklife-logo-2.png'
 
-const currentUser = {
-  firstName: 'Charlie',
-  lastName: 'Jeppsson',
-  avatar:
-    'https://res.cloudinary.com/convendum/image/upload/v1564926762/p98utcvtcuxfsqopqcse.jpg'
-}
+import AuthContext from '../context/authContext'
+import logoHorizontal from '../assets/images/worklife-logo-2.png'
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -16,6 +11,12 @@ export default class NavBar extends React.Component {
       showDropdownMenu: false,
       activeNav: window.location.pathname
     }
+  }
+
+  static contextType = AuthContext // Adds AuthContext to this.context 
+
+  handleLogout() {
+    this.context.logout()
   }
 
   toggleDropdownMenu() {
@@ -117,28 +118,35 @@ export default class NavBar extends React.Component {
 
   render() {
     return (
-      <nav className="NavBar__container">
-        <img className="NavBar__logo" src={logoHorizontal} alt="Logo"/>
+      <AuthContext.Consumer>
+        {({ currentUser }) => (
+          <nav className="NavBar__container">
+            <img className="NavBar__logo" src={logoHorizontal} alt="Logo"/>
 
-        <div className="NavBar__links">
-          {this.renderPrimaryNav()}
-          {this.showCommunitySubNav() ? this.renderCommunitySubNav() : null}
-          {this.showSpacesSubNav() ? this.renderSpacesSubNav() : null}
-        </div>
+            <div className="NavBar__links">
+              {this.renderPrimaryNav()}
+              {this.showCommunitySubNav() ? this.renderCommunitySubNav() : null}
+              {this.showSpacesSubNav() ? this.renderSpacesSubNav() : null}
+            </div>
 
-        <div className="NavBar__avatar">
-          <button onClick={() => this.toggleDropdownMenu()}>
-            <img src={currentUser.avatar} alt="Current user"/>
-          </button>
-        </div>
+            <div className="NavBar__avatar">
+              <button onClick={() => this.toggleDropdownMenu()}>
+                <img src={currentUser.avatar} alt="Current user"/>
+              </button>
+            </div>
 
-        {this.state.showDropdownMenu ? (
-          <div className="NavBar__dropdown">
-            <Link to="/account">Account</Link>
-            <Link to="/logout">Log out</Link>
-          </div>
-        ) : null}
-      </nav>
+            {this.state.showDropdownMenu ? (
+              <div className="NavBar__dropdown">
+                <Link to="/account">Account</Link>
+
+                <button onClick={() => this.handleLogout()}>
+                  Sign out 
+                </button>
+              </div>
+            ) : null}
+          </nav> 
+        )}
+      </AuthContext.Consumer>
     )
   }
 }
