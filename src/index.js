@@ -21,12 +21,12 @@ function ApolloContainer() {
     link
   })
 
-  const AppContainer = withApollo(App)
+  const AppWithClient = withApollo(App) // Provide client to App
 
   return (
     <ApolloProvider client={client}>
       <ApolloHooksProvider client={client}>
-        <AppContainer />
+        <AppWithClient />
       </ApolloHooksProvider>
     </ApolloProvider>
   )

@@ -2,6 +2,9 @@ import React from 'react'
 
 export default React.createContext({
   currentUser: {},
-  login: (email, password) => {},
-  logout: () => {}
+  setCurrentUser: () => {},
+  currentUserLoading: false,
+  setCurrentUserLoading: () => {},
+  currentUserError: null,
+  setCurrentUserError: () => {}
 })

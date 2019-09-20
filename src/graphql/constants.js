@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export const CURRENT_USER = gql`
+export const CURRENT_USER_QUERY = gql`
   {
     currentUser {
       id
@@ -13,7 +13,7 @@ export const CURRENT_USER = gql`
   }
 `
 
-export const LOGIN = gql`
+export const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       user {
@@ -28,7 +28,7 @@ export const LOGIN = gql`
   }
 `
 
-export const LOGOUT = gql`
+export const LOGOUT_MUTATION = gql`
   mutation logout {
     logout {
       user {

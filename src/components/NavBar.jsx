@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
+import { LOGOUT_MUTATION } from '../graphql/constants'
 import AuthContext from '../context/authContext'
 import logoHorizontal from '../assets/images/worklife-logo-2.png'
 
@@ -16,7 +17,17 @@ export default class NavBar extends React.Component {
   static contextType = AuthContext // Adds AuthContext to this.context 
 
   handleLogout() {
-    this.context.logout()
+    this.context.setCurrentUserLoading(true)
+    this.props.client.mutate({ mutation: LOGOUT_MUTATION })
+      .then(res => {
+        console.log('currentUser from logout mutation: ', res.data.logout.user)
+        this.context.setCurrentUser(res.data.logout.user)
+        this.context.setCurrentUserLoading(false)
+      })
+      .catch(err => {
+        console.log('error from logout mutation: ', err)
+        this.context.setCurrentUserLoading(false)
+      })
   }
 
   toggleDropdownMenu() {
