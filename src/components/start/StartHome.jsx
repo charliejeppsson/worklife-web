@@ -17,7 +17,7 @@ export default class StartHome extends React.Component {
   static contextType = AuthContext // Adds AuthContext to this.context 
 
   handleLogin = (email, password) => {
-    this.context.setCurrentUserLoading(true)
+    this.context.setAuthLoading(true)
     this.props.client.mutate({
       variables: { email, password },
       mutation: LOGIN_MUTATION
@@ -25,35 +25,38 @@ export default class StartHome extends React.Component {
       .then(res => {
         console.log('currentUser from login mutation: ', res.data.login.user)
         this.context.setCurrentUser(res.data.login.user)
-        this.context.setCurrentUserLoading(false)
+        localStorage.setItem('accessToken', res.data.login.accessToken)
+        this.context.setAuthLoading(false)
       })
       .catch(err => {
         console.log('error from login mutation: ', err)
-        this.context.setCurrentUserLoading(false)
+        this.context.setAuthError(err)
+        this.context.setAuthLoading(false)
       })
   }
 
   render() {
     const { email, password } = this.state
-    if (this.context.currentUserLoading) { return <LoadingSpinner /> }
+    if (this.context.authLoading) { return <LoadingSpinner /> }
     return (
       <div className="StartHome__container">
-        <img className="NavBar__logo" src={logoHorizontal} alt="Logo"/>
+        <div className="StartHome__form">
+          <img className="NavBar__logo" src={logoHorizontal} alt="Logo"/>
 
-        <input
-          id="email"
-          type="email"
-          onChange={e => this.setState({ email: e.target.value })}
-          placeholder="Enter email address"
-        />
-        <input
-          id="password"
-          type="password"
-          onChange={e => this.setState({ password: e.target.value })}
-          placeholder="Enter password"
-        />
-        
-        <div className="flex mt3">
+          <input
+            id="email"
+            type="email"
+            onChange={e => this.setState({ email: e.target.value })}
+            placeholder="Enter email address"
+          />
+
+          <input
+            id="password"
+            type="password"
+            onChange={e => this.setState({ password: e.target.value })}
+            placeholder="Enter password"
+          />
+          
           <button onClick={() => this.handleLogin(email, password)}>
             Sign in
           </button>

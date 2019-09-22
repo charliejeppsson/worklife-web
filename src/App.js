@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import { withApollo } from 'react-apollo'
 
 import './App.scss'
-import { CURRENT_USER_QUERY } from './graphql/constants'
 import AuthContext from './context/authContext'
 import LoadingSpinner from './components/LoadingSpinner'
 import NavBar from './components/NavBar'
@@ -24,23 +23,28 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.getCurrentUser()
+    this.authenticateUser()
   }
 
-  getCurrentUser = () => {
-    const { client } = this.props
-    client.query({ query: CURRENT_USER_QUERY })
-      .then(res => {
-        console.log('currentUser from currentUser query: ', res.data.currentUser)
-        this.setState({ currentUser: res.data.currentUser, loading: false })
+  authenticateUser = () => {
+    fetch("http://localhost:5000/api/v1/authenticate", {
+      method: "POST",
+      credentials: "include"
+    })
+      .then(async res => {
+        const { accessToken, user } = await res.json()
+        localStorage.setItem('accessToken', accessToken)
+        this.setState({ currentUser: user, loading: false })
       })
       .catch(err => {
-        console.log('error from currentUser query: ', err)
-        this.setState({ loading: false })
+        console.log('error from login mutation: ', err)
+        this.context.setAuthError(err)
+        this.context.setAuthLoading(false)
       })
   }
 
   render() {
+    const accessToken = localStorage.getItem('accessToken')
     const { currentUser, loading, error } = this.state
     const NavBarWithClient = withApollo(NavBar) // Provide client to NavBar
     if (loading) {
@@ -55,14 +59,14 @@ export default class App extends Component {
           <AuthContext.Provider value={{
             currentUser,
             setCurrentUser: (currentUser) => this.setState({ currentUser }),
-            currentUserLoading: loading,
-            setCurrentUserLoading: (loading) => this.setState({ loading }),
-            currentUserError: error,
-            setCurrentUserError: (error) =>  this.setState({ error })
+            authLoading: loading,
+            setAuthLoading: (loading) => this.setState({ loading }),
+            authError: error,
+            setAuthError: (error) =>  this.setState({ error })
           }}>
             <Switch>
               {
-                currentUser.id ? (
+                accessToken && currentUser && !error ? (
                   <React.Fragment>
                     <NavBarWithClient />
                     <Redirect from="/login" to="/" exact />

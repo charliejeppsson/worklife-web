@@ -182,20 +182,27 @@ a {
   &__container {
     height: 100vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__form {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10%;
+    justify-content: center;
     font-family: $primaryFont;
     font-size: 14px;
+    // margin-bottom: 10%;
 
     img {
-      max-width: 200px;
-      margin-bottom: 20px;
-    }
+        max-width: 220px;
+        margin-bottom: 20px;
+      }
 
     input {
-      height: 20px;
-      width: 200px;
+      height: 25px;
+      width: 220px;
       border: none;
       border-radius: 5px;
       margin-bottom: 10px;
@@ -205,8 +212,8 @@ a {
     }
 
     button {
-      height: 30px;
-      width: 210px;
+      height: 35px;
+      width: 230px;
       margin-top: 10px;
       border-radius: 5px;
       background-color: $purple;
@@ -214,6 +221,8 @@ a {
       cursor: pointer;
       font-family: $primaryFont;
       font-size: 12px;
+      font-weight: bold;
+      color: $white;
     }
   }
 }

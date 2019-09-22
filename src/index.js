@@ -5,20 +5,15 @@ import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks'
 import { withApollo } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { createHttpLink } from 'apollo-link-http'
 
 import './index.scss'
 import App from './App'
+import authTokenValidityLink from './apollo/authTokenValidityLink'
 
 function ApolloContainer() {
-  const link = createHttpLink({
-    uri: 'http://localhost:5000/graphql',
-    credentials: 'include'
-  })
-
   const client = new ApolloClient({
     cache: new InMemoryCache(),
-    link
+    link: authTokenValidityLink
   })
 
   const AppWithClient = withApollo(App) // Provide client to App
@@ -33,3 +28,6 @@ function ApolloContainer() {
 }
 
 ReactDOM.render(<ApolloContainer />, document.getElementById('root'))
+
+
+
