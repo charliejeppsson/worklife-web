@@ -5,6 +5,8 @@ import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks'
 import { withApollo } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { transitions,  positions, Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
 
 import './index.scss'
 import App from './App'
@@ -18,10 +20,20 @@ function ApolloContainer() {
 
   const AppWithClient = withApollo(App) // Provide client to App
 
+  const alertOptions = {
+    position: positions.BOTTOM_CENTER,
+    timeout: 8000,
+    offset: '30px',
+    transition: transitions.SCALE,
+    type: 'error' 
+  }
+
   return (
     <ApolloProvider client={client}>
       <ApolloHooksProvider client={client}>
-        <AppWithClient />
+        <AlertProvider template={AlertTemplate} {...alertOptions}>
+          <AppWithClient />
+        </AlertProvider>
       </ApolloHooksProvider>
     </ApolloProvider>
   )

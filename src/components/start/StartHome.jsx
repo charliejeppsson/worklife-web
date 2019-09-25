@@ -1,11 +1,12 @@
 import React from 'react'
+import { withAlert } from 'react-alert'
 
 import { LOGIN_MUTATION } from '../../graphql/constants'
 import AuthContext from '../../context/authContext'
 import LoadingSpinner from '../LoadingSpinner'
 import logoHorizontal from '../../assets/images/worklife-logo-2.png'
 
-export default class StartHome extends React.Component {
+class StartHome extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -17,20 +18,29 @@ export default class StartHome extends React.Component {
   static contextType = AuthContext // Adds AuthContext to this.context 
 
   handleLogin = (email, password) => {
+    if (!email && !password) {
+      this.props.alert.show('Both email and password must be provided.')
+      return
+    }
     this.context.setAuthLoading(true)
     this.props.client.mutate({
       variables: { email, password },
-      mutation: LOGIN_MUTATION
+      mutation: LOGIN_MUTATION,
+      errorPolicy: 'all'
     })
       .then(res => {
-        console.log('currentUser from login mutation: ', res.data.login.user)
-        this.context.setCurrentUser(res.data.login.user)
-        localStorage.setItem('accessToken', res.data.login.accessToken)
+        if (res.errors) {
+          console.log('res.error from login mutation: ', res.errors[0].message)
+          this.props.alert.show(res.errors[0].message)
+        } else {
+          console.log('currentUser from login mutation: ', res.data.login.user)
+          this.context.setCurrentUser(res.data.login.user)
+          localStorage.setItem('accessToken', res.data.login.accessToken)
+        }
         this.context.setAuthLoading(false)
       })
       .catch(err => {
-        console.log('error from login mutation: ', err)
-        this.context.setAuthError(err)
+        console.log('err from login mutation: ', err)
         this.context.setAuthLoading(false)
       })
   }
@@ -65,3 +75,5 @@ export default class StartHome extends React.Component {
     )
   }
 }
+
+export default withAlert()(StartHome)
