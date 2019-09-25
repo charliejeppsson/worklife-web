@@ -19,14 +19,12 @@ export default function CollabDetails(props) {
         duration
         compensation
         createdAt
-        participations {
-          user {
-            id
-            firstName
-            lastName
-            avatar
-            title
-          }
+        participants {
+          id
+          firstName
+          lastName
+          avatar
+          title
         }
         image {
           url
@@ -48,9 +46,9 @@ export default function CollabDetails(props) {
     moment(new Date(date)).format('MMM Do YYYY')
   )
 
-  const renderParticipationsList = (participations) => (
-    participations.map((participation) => (
-      <ContentSignature key={participation.user.id} user={participation.user} />
+  const renderParticipationsList = (participants) => (
+    participants.map((participant) => (
+      <ContentSignature key={participant.id} user={participant} />
     ))
   )
 
@@ -77,7 +75,7 @@ export default function CollabDetails(props) {
               <ContentSignature key={data.collab.user.id} user={data.collab.user} />
               
               <h2>Participants</h2>
-              {renderParticipationsList(data.collab.participations)}
+              {renderParticipationsList(data.collab.participants)}
             </div>
           </div>
       }

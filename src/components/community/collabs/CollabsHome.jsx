@@ -15,13 +15,11 @@ export default function CollabsHome() {
         duration
         compensation
         createdAt
-        participations {
-          user {
-            id
-            firstName
-            lastName
-            avatar
-          }
+        participants {
+          id
+          firstName
+          lastName
+          avatar
         }
         image {
           url

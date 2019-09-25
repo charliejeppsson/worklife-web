@@ -23,14 +23,12 @@ export default function EventDetails(props) {
           name
           address
         }
-        attendances {
-          user {
-            id
-            firstName
-            lastName
-            avatar
-            title
-          }
+        attendants {
+          id
+          firstName
+          lastName
+          avatar
+          title
         }
         image {
           url
@@ -52,9 +50,9 @@ export default function EventDetails(props) {
     moment(new Date(date)).format('MMM Do YYYY')
   )
 
-  const renderAttendantsList = (attendances) => (
-    attendances.map((attendance) => (
-      <ContentSignature key={attendance.user.id} user={attendance.user} />
+  const renderAttendantsList = (attendants) => (
+    attendants.map((attendant) => (
+      <ContentSignature key={attendant.id} user={attendant} />
     ))
   )
 
@@ -81,7 +79,7 @@ export default function EventDetails(props) {
               <ContentSignature key={data.event.user.id} user={data.event.user} />
               
               <h2>Attendants</h2>
-              {renderAttendantsList(data.event.attendances)}
+              {renderAttendantsList(data.event.attendants)}
             </div>
           </div>
       }

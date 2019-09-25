@@ -7,12 +7,12 @@ export default function EventListItemContent(props) {
   const defaultAvatarUrl = 'https://res.cloudinary.com/charliejeppsson/image/upload/v1567786133/avatar-placeholder_lf2gzx.png'
 
   const eventAttendants = () => (
-    event.attendances.map((a) => (
+    event.attendants.map((a) => (
       <img
-        key={a.user.id}
-        src={a.user.avatar || defaultAvatarUrl}
-        title={a.user.firstName + ' ' + (a.user.lastName || '')}
         alt="Attendant"
+        key={a.id}
+        src={a.avatar || defaultAvatarUrl}
+        title={a.firstName + ' ' + (a.lastName || '')}
        />
     ))
   )

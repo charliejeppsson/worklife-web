@@ -36,13 +36,11 @@ export default function NewsHome() {
             name
             address
           }
-          attendances {
-            user {
-              id
-              firstName
-              lastName
-              avatar
-            }
+          attendants {
+            id
+            firstName
+            lastName
+            avatar
           }
         }
         collabId
@@ -51,13 +49,11 @@ export default function NewsHome() {
           description
           duration
           compensation
-          participations {
-            user {
-              id
-              firstName
-              lastName
-              avatar
-            }
+          participants {
+            id
+            firstName
+            lastName
+            avatar
           }
         }
       }

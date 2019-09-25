@@ -19,13 +19,11 @@ export default function EventsHome() {
           name
           address
         }
-        attendances {
-          user {
-            id
-            firstName
-            lastName
-            avatar
-          }
+        attendants {
+          id
+          firstName
+          lastName
+          avatar
         }
         image {
           url
