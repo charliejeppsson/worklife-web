@@ -12,9 +12,9 @@ import CollabDetails from '../components/community/collabs/CollabDetails'
 export default function CommunityRoutes() {
   return (
     <React.Fragment>
-      <Route path="/community" component={CommunityHome} />
-      <Route path="/community/news" component={NewsHome} />
-      <Route path="/community/news/:id" component={NewsDetails} />
+      <Route exact path="/community" component={CommunityHome} />
+      <Route exact path="/community/news" component={NewsHome} />
+      <Route exact path="/community/news/:id" component={NewsDetails} />
 
       <Route exact path="/community/events" component={EventsHome} />
       <Route exact path="/community/events/:id" component={EventDetails} />

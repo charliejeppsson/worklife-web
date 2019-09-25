@@ -3,6 +3,6 @@ import { Redirect } from 'react-router-dom'
 
 export default function CommunityHome() {
   return (
-    <Redirect to="/community/news" />
+    <Redirect to="/community/news" exact />
   )
 }
