@@ -9,10 +9,10 @@ export default function EventListItemContent(props) {
   const eventAttendants = () => (
     event.attendants.map((a) => (
       <img
-        alt="Attendant"
         key={a.id}
         src={a.avatar || defaultAvatarUrl}
         title={a.firstName + ' ' + (a.lastName || '')}
+        alt={a.firstName + ' ' + (a.lastName || '')}
        />
     ))
   )

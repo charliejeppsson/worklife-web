@@ -9,10 +9,10 @@ export default function NewsListItemEventContent(props) {
   const collabParticipants = () => (
     collab.participants.map((p) => (
       <img
-        alt="Participant"
         key={p.id}
         src={p.avatar || defaultAvatarUrl}
         title={p.firstName + ' ' + (p.lastName || '')}
+        alt={p.firstName + ' ' + (p.lastName || '')}
        />
     ))
   )
