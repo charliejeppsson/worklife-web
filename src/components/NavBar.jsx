@@ -43,8 +43,15 @@ export default class NavBar extends React.Component {
   }
 
   showCommunitySubNav() {
-    return this.state.activeNav.slice(0, 10) === '/' ||
-    this.state.activeNav.slice(0, 10) === '/community'
+    switch (this.state.activeNav.slice(0, 10)) {
+      case '/':
+      case '/community':
+      case '/login':
+        return true
+      default:
+        return false
+    }
+
   }
 
   showSpacesSubNav() {
