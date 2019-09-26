@@ -4,8 +4,9 @@ import { withApollo } from 'react-apollo'
 
 import './App.scss'
 import AuthContext from './context/authContext'
+import NavContext from './context/navContext'
 import LoadingSpinner from './components/LoadingSpinner'
-import NavBar from './components/NavBar'
+import NavBar from './components/nav/NavBar'
 import StartHome from './components/start/StartHome'
 import CommunityRoutes from './routes/CommunityRoutes'
 import SpacesRoutes from './routes/SpacesRoutes'
@@ -15,9 +16,10 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      activeNav: '/community/news',
       currentUser: {},
-      loading: true,
-      error: null
+      error: null,
+      loading: true
     }
   }
 
@@ -44,8 +46,9 @@ export default class App extends Component {
 
   render() {
     const accessToken = localStorage.getItem('accessToken')
-    const { currentUser, loading, error } = this.state
+    const { activeNav, error, currentUser, loading } = this.state
     const NavBarWithClient = withApollo(NavBar) // Provide client to NavBar
+
     if (loading) {
       return (
         <div className="body__container">
@@ -63,6 +66,10 @@ export default class App extends Component {
             authError: error,
             setAuthError: (error) =>  this.setState({ error })
           }}>
+            <NavContext.Provider value={{
+              activeNav,
+              setActiveNav: (activeNav) => this.setState({ activeNav })
+            }}>
               <Switch>
                 {
                   accessToken && currentUser && !error ? (
@@ -81,6 +88,7 @@ export default class App extends Component {
                   )
                 }
               </Switch>  
+            </NavContext.Provider>
           </AuthContext.Provider>
         </BrowserRouter>
       )
