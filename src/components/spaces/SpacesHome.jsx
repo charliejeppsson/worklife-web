@@ -1,8 +1,32 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { useQuery } from '@apollo/react-hooks'
+import { gql } from 'apollo-boost'
+
+import SpacesList from './SpacesList'
+import LoadingSpinner from '../LoadingSpinner'
 
 export default function SpacesHome() {
+  const { loading, error, data } = useQuery(gql`
+    {
+      spaces {
+        id
+        name
+        city
+        address
+        type
+        image {
+          url
+          info
+        }
+      }
+    }
+  `)
+
+  if (error) return <p>Error :(</p>
+
   return (
-    <Redirect to="/spaces/new-booking" />
+    <div className="body__container">
+      {loading ? <LoadingSpinner /> : <SpacesList spaces={data.spaces} />}
+    </div>
   )
 }

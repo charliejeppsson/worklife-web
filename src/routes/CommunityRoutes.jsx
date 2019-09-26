@@ -1,7 +1,6 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom'
 
-import CommunityHome from '../components/community/CommunityHome'
 import NewsHome from '../components/community/news/NewsHome'
 import NewsDetails from '../components/community/news/NewsDetails'
 import EventsHome from '../components/community/events/EventsHome'
@@ -11,8 +10,10 @@ import CollabDetails from '../components/community/collabs/CollabDetails'
 
 export default function CommunityRoutes() {
   return (
-    <React.Fragment>
-      <Route exact path="/community" component={CommunityHome} />
+    <Switch>
+      <Redirect exact from="/" to="/community/news" />
+      <Redirect exact from="/community" to="/community/news" />
+
       <Route exact path="/community/news" component={NewsHome} />
       <Route exact path="/community/news/:id" component={NewsDetails} />
 
@@ -21,6 +22,6 @@ export default function CommunityRoutes() {
       
       <Route exact path="/community/collabs" component={CollabsHome} />
       <Route exact path="/community/collabs/:id" component={CollabDetails} />
-    </React.Fragment>
+    </Switch>
   )
 }

@@ -7,7 +7,6 @@ import AuthContext from './context/authContext'
 import LoadingSpinner from './components/LoadingSpinner'
 import NavBar from './components/NavBar'
 import StartHome from './components/start/StartHome'
-import CommunityHome from './components/community/CommunityHome'
 import CommunityRoutes from './routes/CommunityRoutes'
 import SpacesRoutes from './routes/SpacesRoutes'
 import BenefitsRoutes from './routes/BenefitsRoutes'
@@ -64,25 +63,24 @@ export default class App extends Component {
             authError: error,
             setAuthError: (error) =>  this.setState({ error })
           }}>
-            <Switch>
-              {
-                accessToken && currentUser && !error ? (
-                  <React.Fragment>
-                    <NavBarWithClient />
-                    <Redirect from="/login" to="/" exact />
-                    <Route exact path="/" component={CommunityHome} />
-                    <CommunityRoutes />
-                    <SpacesRoutes />
-                    <BenefitsRoutes />
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                    <Redirect to="/login" exact />
-                    <Route exact path="/login" component={withApollo(StartHome)} />
-                  </React.Fragment>
-                )
-              }
-            </Switch>  
+              <Switch>
+                {
+                  accessToken && currentUser && !error ? (
+                    <React.Fragment>
+                      <NavBarWithClient />
+                      <Redirect exact from="/login" to="/community/news" />
+                      <CommunityRoutes />
+                      <SpacesRoutes />
+                      <BenefitsRoutes />
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <Redirect to="/login" exact />
+                      <Route exact path="/login" component={withApollo(StartHome)} />
+                    </React.Fragment>
+                  )
+                }
+              </Switch>  
           </AuthContext.Provider>
         </BrowserRouter>
       )
