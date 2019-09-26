@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import { withApollo } from 'react-apollo'
 
@@ -12,22 +12,15 @@ import CommunityRoutes from './routes/CommunityRoutes'
 import SpacesRoutes from './routes/SpacesRoutes'
 import BenefitsRoutes from './routes/BenefitsRoutes'
 
-export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      activeNav: '/community/news',
-      currentUser: {},
-      error: null,
-      loading: true
-    }
-  }
+export default function App(props) {
+  const [activeNav, setActiveNav] = useState('/community/news')
+  const [currentUser, setCurrentUser] = useState({})
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true)
+  
+  useEffect(() => { authenticateUser() }, [])
 
-  componentDidMount() {
-    this.authenticateUser()
-  }
-
-  authenticateUser = () => {
+  const authenticateUser = () => {
     fetch("http://localhost:5000/api/v1/authenticate", {
       method: "POST",
       credentials: "include"
@@ -35,63 +28,64 @@ export default class App extends Component {
       .then(async res => {
         const { accessToken, user } = await res.json()
         localStorage.setItem('accessToken', accessToken)
-        this.setState({ currentUser: user, loading: false })
+        setCurrentUser(user)
+        setError(null)
+        setLoading(false)
       })
       .catch(err => {
         console.log('error from login mutation: ', err)
-        this.context.setAuthError(err)
-        this.context.setAuthLoading(false)
+        localStorage.setItem('accessToken', null)
+        setCurrentUser({})
+        setError(err)
+        setLoading(false)
       })
   }
 
-  render() {
-    const accessToken = localStorage.getItem('accessToken')
-    const { activeNav, error, currentUser, loading } = this.state
-    const NavBarWithClient = withApollo(NavBar) // Provide client to NavBar
+  const accessToken = localStorage.getItem('accessToken')
+  const NavBarWithClient = withApollo(NavBar) // Provide client to NavBar
 
-    if (loading) {
-      return (
-        <div className="body__container">
-          <LoadingSpinner />
-        </div>
-      )
-    } else {
-      return (
-        <BrowserRouter>
-          <AuthContext.Provider value={{
-            currentUser,
-            setCurrentUser: (currentUser) => this.setState({ currentUser }),
-            authLoading: loading,
-            setAuthLoading: (loading) => this.setState({ loading }),
-            authError: error,
-            setAuthError: (error) =>  this.setState({ error })
+  if (loading) {
+    return (
+      <div className="body__container">
+        <LoadingSpinner />
+      </div>
+    )
+  } else {
+    return (
+      <BrowserRouter>
+        <AuthContext.Provider value={{
+          currentUser,
+          setCurrentUser: (currentUser) => setCurrentUser(currentUser),
+          authLoading: loading,
+          setAuthLoading: (loading) => setLoading(loading),
+          authError: error,
+          setAuthError: (error) =>  setError(error)
+        }}>
+          <NavContext.Provider value={{
+            activeNav,
+            setActiveNav: (activeNav) => setActiveNav(activeNav)
           }}>
-            <NavContext.Provider value={{
-              activeNav,
-              setActiveNav: (activeNav) => this.setState({ activeNav })
-            }}>
-              <Switch>
-                {
-                  accessToken && currentUser && !error ? (
-                    <React.Fragment>
-                      <NavBarWithClient />
-                      <Redirect exact from="/login" to="/community/news" />
-                      <CommunityRoutes />
-                      <SpacesRoutes />
-                      <BenefitsRoutes />
-                    </React.Fragment>
-                  ) : (
-                    <React.Fragment>
-                      <Redirect to="/login" exact />
-                      <Route exact path="/login" component={withApollo(StartHome)} />
-                    </React.Fragment>
-                  )
-                }
-              </Switch>  
-            </NavContext.Provider>
-          </AuthContext.Provider>
-        </BrowserRouter>
-      )
-    }
+            <Switch>
+              {
+                accessToken && currentUser && !error ? (
+                  <React.Fragment>
+                    <NavBarWithClient />
+                    <Redirect exact from="/login" to="/community/news" />
+                    <CommunityRoutes />
+                    <SpacesRoutes />
+                    <BenefitsRoutes />
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    <Redirect to="/login" exact />
+                    <Route exact path="/login" component={withApollo(StartHome)} />
+                  </React.Fragment>
+                )
+              }
+            </Switch>  
+          </NavContext.Provider>
+        </AuthContext.Provider>
+      </BrowserRouter>
+    )
   }
 }
