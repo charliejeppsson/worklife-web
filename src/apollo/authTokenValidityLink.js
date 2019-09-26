@@ -64,6 +64,7 @@ const link = ApolloLink.from([
     },
     handleFetch: accessToken => localStorage.setItem('accessToken', accessToken),
     handleError: err => {
+      localStorage.setItem('accessToken', null)
       console.warn("Your refresh token is invalid. Please log in again.")
       console.error(err)
     }
