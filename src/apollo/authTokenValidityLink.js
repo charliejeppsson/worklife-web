@@ -51,7 +51,6 @@ const link = ApolloLink.from([
       try {
         const { exp } = jwtDecode(accessToken)
         const tokenNotExpired = Date.now() < exp * 1000
-        if (!tokenNotExpired) { console.log('---- TOKEN HAS EXPIRED!!!!') }
         return tokenNotExpired
       } catch {
         return false
