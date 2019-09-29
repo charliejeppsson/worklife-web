@@ -311,13 +311,14 @@ a {
     &__details {
       display: flex;
       align-items: center;
+      margin-bottom: 5px;
 
       svg {
         width: 15px !important;
       }
 
       p {
-        margin: 5px 0 0 8px;
+        margin: 2px 0 0 8px;
         font-size: 12px;
       }
     }
@@ -334,6 +335,17 @@ a {
         margin-left: -10px;
         object-fit: cover;
         box-shadow: -1px 0 3px $black;
+      }
+    }
+
+    &__utilities {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+
+      svg {
+        margin-right: 10px;
       }
     }
   }
@@ -441,6 +453,21 @@ a {
     }
   }
 }
+
+.worklife-btn {
+  height: 35px;
+  width: 230px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: $purple;
+  border-color: transparent;
+  cursor: pointer;
+  font-family: $primaryFont;
+  font-size: 12px;
+  font-weight: bold;
+  color: $white;
+}
+
 
 // Utility components ---------------------------------------------------------
 

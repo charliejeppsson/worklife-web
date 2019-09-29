@@ -1,6 +1,16 @@
 import React from 'react'
-import moment from 'moment'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faMapPin,
+  faClock,
+  faChair,
+  faWifi,
+  faCoffee,
+  faMugHot,
+  faCookieBite,
+  faUtensils
+} from '@fortawesome/free-solid-svg-icons'
 
 export default function SpacesListItem(props) {
   const { space } = props
@@ -17,11 +27,42 @@ export default function SpacesListItem(props) {
         </div>
         <div className="NewsListItem__content">
           <div>
-            <h2>{space.name}</h2>
+            <div className="NewsListItem__content__top-row">
+              <p className="created-at">
+                {space.type.charAt(0).toUpperCase() + space.type.slice(1)}
+              </p>
+            </div>
 
-            <p className="NewsListItem__content__description">
-              {space.address}, {space.city}
-            </p>
+            <h2>{space.name}</h2>
+          </div>
+
+          <div>
+            <div className="NewsListItem__content__utilities">
+              {space.coffee && <FontAwesomeIcon icon={faCoffee} />}
+              {space.wifi && <FontAwesomeIcon icon={faWifi} />}
+              {space.tea && <FontAwesomeIcon icon={faMugHot} />}
+              {space.snacks && <FontAwesomeIcon icon={faCookieBite} />}
+              {space.meals && <FontAwesomeIcon icon={faUtensils} />}
+            </div>
+
+            <div className="NewsListItem__content__details">
+              <FontAwesomeIcon icon={faMapPin} />
+              <p>{space.address}, {space.city}</p>
+            </div>
+
+            <div className="NewsListItem__content__details">
+              <FontAwesomeIcon icon={faChair} />
+              <p>Capacity: {space.capacity}</p> 
+            </div>
+
+            <div className="NewsListItem__content__details">
+              <FontAwesomeIcon icon={faClock} />
+              <p>{space.opensAt} - {space.closesAt}</p>
+            </div>
+
+            <div className="NewsListItem__content__booking-btn">
+              <button className="worklife-btn">Reserve your seat</button> 
+            </div>
           </div>
         </div>
       </li>
