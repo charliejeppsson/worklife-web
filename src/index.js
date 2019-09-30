@@ -7,6 +7,8 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { transitions,  positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
+import { MuiPickersUtilsProvider } from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 
 import './index.scss'
 import App from './App'
@@ -32,7 +34,9 @@ function ApolloContainer() {
     <ApolloProvider client={client}>
       <ApolloHooksProvider client={client}>
         <AlertProvider template={AlertTemplate} {...alertOptions}>
-          <AppWithClient />
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <AppWithClient />
+          </MuiPickersUtilsProvider>
         </AlertProvider>
       </ApolloHooksProvider>
     </ApolloProvider>

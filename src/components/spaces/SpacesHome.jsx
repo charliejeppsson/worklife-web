@@ -14,6 +14,14 @@ export default function SpacesHome() {
         city
         address
         type
+        capacity
+        wifi
+        coffee
+        tea
+        snacks
+        meals
+        opensAt
+        closesAt
         image {
           url
           info
