@@ -1,21 +1,23 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { useMutation, useApolloClient } from '@apollo/react-hooks'
 
 import { LOGOUT_MUTATION } from '../../graphql/constants'
 import AuthContext from '../../context/authContext'
 
 export default function DropdownMenu(props) {
   const { setCurrentUser, setAuthLoading } = useContext(AuthContext)
+  const [logout, { data, loading, error }] = useMutation(LOGOUT_MUTATION)
+  const client = useApolloClient()
 
-  function handleLogout() {
+  const handleLogout = () => {
     setAuthLoading(true)
-    return props.client.mutate({ mutation: LOGOUT_MUTATION })
+    return logout()
       .then(res => {
-        console.log('currentUser from logout mutation: ', res.data.logout.user)
         localStorage.removeItem('accessToken')
         setCurrentUser(res.data.logout.user)
         setAuthLoading(false)
-        props.client.resetStore() // Reset Apollo query cache
+        client.resetStore() // Reset Apollo query cache
       })
       .catch(err => {
         console.log('error from logout mutation: ', err)

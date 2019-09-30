@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react'
-import { withAlert } from 'react-alert'
+import { useMutation } from '@apollo/react-hooks'
 
 import { LOGIN_MUTATION } from '../../graphql/constants'
 import AuthContext from '../../context/authContext'
 import LoadingSpinner from '../LoadingSpinner'
 import logoHorizontal from '../../assets/images/worklife-logo-2.png'
 
-function StartHome(props) {
+export default function StartHome(props) {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const { authLoading, setAuthLoading, setCurrentUser } = useContext(AuthContext)
+  const [login, { data, loading, error }] = useMutation(LOGIN_MUTATION)
 
   const handleLogin = () => {
     if (!email && !password) {
@@ -17,11 +18,7 @@ function StartHome(props) {
       return
     }
     setAuthLoading(true)
-    props.client.mutate({
-      variables: { email, password },
-      mutation: LOGIN_MUTATION,
-      errorPolicy: 'all'
-    })
+    login({ variables: { email, password }, errorPolicy: 'all' })
       .then(res => {
         if (res.errors) {
           console.log('res.error from login mutation: ', res.errors[0].message)
@@ -66,5 +63,3 @@ function StartHome(props) {
     </div>
   )
 }
-
-export default withAlert()(StartHome)

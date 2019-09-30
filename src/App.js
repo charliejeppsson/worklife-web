@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
-import { withApollo } from 'react-apollo'
 
 import './App.scss'
 import AuthContext from './context/authContext'
@@ -42,7 +41,6 @@ export default function App(props) {
   }
 
   const accessToken = localStorage.getItem('accessToken')
-  const NavBarWithClient = withApollo(NavBar) // Provide client to NavBar
 
   if (loading) {
     return (
@@ -69,7 +67,7 @@ export default function App(props) {
               {
                 accessToken && currentUser && !error ? (
                   <React.Fragment>
-                    <NavBarWithClient />
+                    <NavBar />
                     <Redirect exact from="/login" to="/community/news" />
                     <CommunityRoutes />
                     <SpacesRoutes />
@@ -78,7 +76,7 @@ export default function App(props) {
                 ) : (
                   <React.Fragment>
                     <Redirect to="/login" exact />
-                    <Route exact path="/login" component={withApollo(StartHome)} />
+                    <Route exact path="/login" component={StartHome} />
                   </React.Fragment>
                 )
               }

@@ -1,9 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ApolloProvider } from 'react-apollo'
-import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks'
-import { withApollo } from 'react-apollo'
-import { ApolloClient } from 'apollo-client'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { ApolloClient } from 'apollo-boost'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { transitions,  positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
@@ -20,8 +18,6 @@ function ApolloContainer() {
     link: authTokenValidityLink
   })
 
-  const AppWithClient = withApollo(App) // Provide client to App
-
   const alertOptions = {
     position: positions.BOTTOM_CENTER,
     timeout: 8000,
@@ -32,13 +28,11 @@ function ApolloContainer() {
 
   return (
     <ApolloProvider client={client}>
-      <ApolloHooksProvider client={client}>
-        <AlertProvider template={AlertTemplate} {...alertOptions}>
-          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <AppWithClient />
-          </MuiPickersUtilsProvider>
-        </AlertProvider>
-      </ApolloHooksProvider>
+      <AlertProvider template={AlertTemplate} {...alertOptions}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <App />
+        </MuiPickersUtilsProvider>
+      </AlertProvider>
     </ApolloProvider>
   )
 }

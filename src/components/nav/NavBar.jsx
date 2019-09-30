@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react'
-import { withApollo } from 'react-apollo'
 
 import AuthContext from '../../context/authContext'
 import logoHorizontal from '../../assets/images/worklife-logo-2.png'
@@ -11,9 +10,6 @@ import DropdownMenu from './DropdownMenu'
 export default function NavBar() {
   const [showDropdownMenu, setShowDropdownMenu] = useState(false)
   const { currentUser } = useContext(AuthContext)
-
-  // Provide client to DropdownMenu
-  const DropdownWithClient = withApollo(DropdownMenu)
 
   return (
     <nav className="NavBar__container">
@@ -31,7 +27,7 @@ export default function NavBar() {
         </button>
       </div>
       
-      {showDropdownMenu && <DropdownWithClient />}
+      {showDropdownMenu && <DropdownMenu />}
     </nav> 
   )
 }
