@@ -12,7 +12,7 @@ import DateFnsUtils from '@date-io/date-fns'
 
 import './index.scss'
 import App from './App'
-import authTokenValidityLink from './apollo/authTokenValidityLink'
+import authTokenValidityLink from './graphql/authTokenValidityLink'
 
 function ApolloContainer() {
   const client = new ApolloClient({
