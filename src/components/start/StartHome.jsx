@@ -3,6 +3,7 @@ import { useMutation } from '@apollo/react-hooks'
 
 import { LOGIN_MUTATION } from '../../graphql/constants'
 import AuthContext from '../../context/authContext'
+import NavContext from '../../context/navContext'
 import LoadingSpinner from '../LoadingSpinner'
 import logoHorizontal from '../../assets/images/worklife-logo-2.png'
 
@@ -10,6 +11,7 @@ export default function StartHome(props) {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const { authLoading, setAuthLoading, setCurrentUser } = useContext(AuthContext)
+  const { setActiveNav } = useContext(NavContext)
   const [login, { data, loading, error }] = useMutation(LOGIN_MUTATION)
 
   const handleLogin = () => {
@@ -29,6 +31,7 @@ export default function StartHome(props) {
           localStorage.setItem('accessToken', res.data.login.accessToken)
         }
         setAuthLoading(false)
+        setActiveNav('/community/news')
       })
       .catch(err => {
         console.log('err from login mutation: ', err)
