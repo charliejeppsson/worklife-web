@@ -6,8 +6,25 @@ export const CREATE_BOOKING = gql`
     createBooking(date: $date, spaceId: $spaceId) {
       id
       date
-      spaceId
       userId
+      space {
+        id
+        name
+        address
+        city
+        type
+        capacity
+        opensAt
+        closesAt
+        image {
+          url
+          info
+        }
+      }
+    }
+  }
+`
+
 export const CANCEL_BOOKING = gql`
   mutation cancelBooking($id: ID!) {
     cancelBooking(id: $id) {

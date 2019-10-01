@@ -13,26 +13,35 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { withAlert } from 'react-alert'
 
-import { CREATE_BOOKING } from '../../graphql/constants'
+import { CREATE_BOOKING, MY_BOOKINGS } from '../../graphql/constants'
 import LoadingSpinner from '../LoadingSpinner'
 
 function SpacesListItem(props) {
   const { space, selectedDate } = props
-  const [createBooking, { data, loading, error }] = useMutation(CREATE_BOOKING)
+  const [createBooking, { loading, error }] = useMutation(CREATE_BOOKING)
 
-  const handleNewBooking = () => {
-    console.log(`---- New booking: ${selectedDate}, ${space.name}`)
-    const formattedDate = new Date(selectedDate)
-    console.log('---- Formatted date: ', formattedDate)
-    createBooking({ variables: { date: selectedDate, spaceId: space.id } })
+  const handleNewBooking = async () => {
+    await createBooking({
+      variables: { date: selectedDate, spaceId: space.id },
+      // Update myBookings list in Apollo cache/store
+      update: (store, { data: { createBooking } }) => {
+        try {
+          // Read the data from our cache for this query
+          const data = store.readQuery({ query: MY_BOOKINGS })
+          // Add our new booking from the mutation to the myBookings list
+          data.myBookings.push(createBooking)
+          // Write our extended myBookings list back to the cache
+          store.writeQuery({ query: MY_BOOKINGS, data })
+        } catch(err) {
+          console.warn(err)
+        }
+      }
+    })
   }
 
   if (loading) { return <LoadingSpinner /> }
   if (error) {
-    return props.alert.show('Booking could not be created. Please try again.')
-  }
-  if (data) {
-    console.log('---- data: ', data)
+    return props.alert.show('The booking could not be created.')
   }
 
   return (
