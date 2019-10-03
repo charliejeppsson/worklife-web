@@ -11,7 +11,11 @@ export default function MyBookingsList(props) {
   
   return (
     <div className="NewsList__container">
-      <ul className="NewsList__list">{listItems}</ul>
+      {
+        bookings.length === 0 ?
+          <p>Nothing to see here. Carry on.</p>
+          : <ul className="NewsList__list">{listItems}</ul>
+      }
     </div>
   )
 }
