@@ -540,6 +540,8 @@ a {
   &__container {
     height: 500px;
     display: flex;
+    align-self: center;
+    margin: 0 auto;
     align-items: center;
 
     svg {

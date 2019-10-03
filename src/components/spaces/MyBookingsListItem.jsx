@@ -41,7 +41,7 @@ export default function MyBookingsListItem(props) {
     })
   }
 
-  if (loading) { return <LoadingSpinner /> }
+  if (loading) { return <li className="NewsListItem"><LoadingSpinner /></li> }
   if (error) { return props.alert.show('The booking could not be cancelled.') }
 
   return (
