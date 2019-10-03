@@ -4,27 +4,45 @@ import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin, faClock, faChair } from '@fortawesome/free-solid-svg-icons'
 
-import { CANCEL_BOOKING } from '../../graphql/constants'
+import { CANCEL_BOOKING, MY_BOOKINGS } from '../../graphql/constants'
 import LoadingSpinner from '../LoadingSpinner'
 
 export default function MyBookingsListItem(props) {
   const { booking } = props
-  const [cancelBooking, { data, loading, error }] = useMutation(CANCEL_BOOKING)
+  const [cancelBooking, { loading, error }] = useMutation(CANCEL_BOOKING)
 
   const formatBookingDate = date => {
     const dateObject = new Date(date)
     return moment(dateObject).format('YYYY-MM-DD')
   }
 
-  const handleCancelBooking = () => {
-    cancelBooking({ variables: { id: booking.id } })
+  const handleCancelBooking = async () => {
+    await cancelBooking({
+      variables: { id: booking.id },
+      update: (store, { data: { cancelBooking } }) => {
+        try {
+          // Read the myBookings data present in the store
+          const data = store.readQuery({ query: MY_BOOKINGS })
+          // Remove the booking from the myBookings state
+          if (cancelBooking.success) {
+            // Filter the deleted booking out of the cached data 
+            const updatedMyBookings = data.myBookings
+              .filter(b => b.id !== booking.id)
+            // Write our new myBookings list back to the store
+            store.writeQuery({
+              query: MY_BOOKINGS,
+              data: { myBookings: updatedMyBookings }
+            })
+          }
+        } catch(err) {
+          console.warn(err)
+        }
+      }
+    })
   }
 
   if (loading) { return <LoadingSpinner /> }
-  if (error) {
-    return props.alert.show('The booking could not be cancelled.')
-  }
-  if (data) { console.log('---- data: ', data) }
+  if (error) { return props.alert.show('The booking could not be cancelled.') }
 
   return (
     <li className="NewsListItem">
