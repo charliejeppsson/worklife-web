@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import moment from 'moment'
-import MomentUtils from '@date-io/moment'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 
