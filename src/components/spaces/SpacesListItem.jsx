@@ -26,11 +26,11 @@ function SpacesListItem(props) {
       // Update myBookings list in Apollo cache/store
       update: (store, { data: { createBooking } }) => {
         try {
-          // Read the data from our cache for this query
+          // Read the myBookings data present in the store
           const data = store.readQuery({ query: MY_BOOKINGS })
-          // Add our new booking from the mutation to the myBookings list
+          // Add the new booking to the myBookings state
           data.myBookings.push(createBooking)
-          // Write our extended myBookings list back to the cache
+          // Write our extended myBookings list back to the store
           store.writeQuery({ query: MY_BOOKINGS, data })
         } catch(err) {
           console.warn(err)
