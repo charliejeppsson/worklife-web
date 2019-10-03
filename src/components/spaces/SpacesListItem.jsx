@@ -39,10 +39,8 @@ function SpacesListItem(props) {
     })
   }
 
-  if (error) {
-    return props.alert.show('The booking could not be created.')
-  }
   if (loading) { return <li className="NewsListItem"><LoadingSpinner /></li> }
+  if (error) { return props.alert.show('The booking could not be created.') }
 
   return (
     <li className="NewsListItem">
