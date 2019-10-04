@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 
-import './App.scss'
 import AuthContext from './context/authContext'
 import NavContext from './context/navContext'
-import LoadingSpinner from './components/LoadingSpinner'
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 import NavBar from './components/nav/NavBar/NavBar'
 import StartHome from './components/start/StartHome'
 import CommunityRoutes from './routes/CommunityRoutes'
 import SpacesRoutes from './routes/SpacesRoutes'
 import BenefitsRoutes from './routes/BenefitsRoutes'
+import './App.scss'
 
 export default function App(props) {
   const [activeNav, setActiveNav] = useState('/community/news')

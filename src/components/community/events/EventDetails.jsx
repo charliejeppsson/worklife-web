@@ -3,9 +3,9 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import moment from 'moment'
 
-import ContentSignature from '../../ContentSignature'
+import ContentSignature from '../../ContentSignature/ContentSignature'
 import EventInfo from './EventInfo'
-import LoadingSpinner from '../../LoadingSpinner'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 
 export default function EventDetails(props) {
   const eventId = useState(props.location.state.eventId)[0]

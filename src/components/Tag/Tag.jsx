@@ -1,4 +1,5 @@
 import React from 'react'
+import './Tag.scss'
 
 export default function Tag(props) {
   const { title } = props

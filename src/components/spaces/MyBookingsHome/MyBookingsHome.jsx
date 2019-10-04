@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 
 import { MY_BOOKINGS } from '../../../graphql/constants'
 import MyBookingsList from '../MyBookingsList/MyBookingsList'
-import LoadingSpinner from '../../LoadingSpinner'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import './MyBookingsHome.scss'
 
 export default function MyBookingsHome() {

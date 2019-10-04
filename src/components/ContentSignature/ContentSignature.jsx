@@ -1,4 +1,5 @@
 import React from 'react'
+import './ContentSignature.scss'
 
 export default function ContentSignature(props) {
   const { user } = props

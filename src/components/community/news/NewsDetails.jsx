@@ -3,8 +3,8 @@ import moment from 'moment'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
-import ContentSignature from '../../ContentSignature'
-import LoadingSpinner from '../../LoadingSpinner'
+import ContentSignature from '../../ContentSignature/ContentSignature'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 
 export default function NewsDetails(props) {
   const newsPostId = useState(props.location.state.newsPostId)[0]

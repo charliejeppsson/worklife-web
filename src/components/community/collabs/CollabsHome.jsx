@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
 import CollabsList from './CollabsList'
-import LoadingSpinner from '../../LoadingSpinner'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 
 export default function CollabsHome() {
   const { loading, error, data } = useQuery(gql`

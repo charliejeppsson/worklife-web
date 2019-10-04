@@ -14,7 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import { CREATE_BOOKING, MY_BOOKINGS } from '../../../graphql/constants'
-import LoadingSpinner from '../../LoadingSpinner'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import './SpacesListItem.scss'
 
 export default function SpacesListItem(props) {

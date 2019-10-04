@@ -1,0 +1,27 @@
+@import '../../assets/styleVariables.scss';
+
+.LoadingSpinner {
+  &__container {
+    height: 500px;
+    display: flex;
+    align-self: center;
+    margin: 0 auto;
+    align-items: center;
+
+    svg {
+      font-size: 50px;
+      color: $yellow;
+      animation: LoadingSpinner--spin infinite 3s linear;
+      pointer-events: none;
+    }
+  }
+
+  @keyframes LoadingSpinner--spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

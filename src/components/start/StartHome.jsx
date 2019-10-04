@@ -5,7 +5,7 @@ import { useAlert } from 'react-alert'
 import { LOGIN_MUTATION } from '../../graphql/constants'
 import AuthContext from '../../context/authContext'
 import NavContext from '../../context/navContext'
-import LoadingSpinner from '../LoadingSpinner'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import logoHorizontal from '../../assets/images/worklife-logo-2.png'
 import './StartHome.scss'
 

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 import EventsListItemContent from '../events/EventsListItemContent'
 import CollabsListItemContent from '../collabs/CollabsListItemContent'
-import Tag from '../../Tag'
-import ContentSignature from '../../ContentSignature'
+import Tag from '../../Tag/Tag'
+import ContentSignature from '../../ContentSignature/ContentSignature'
 
 export default function NewsListItem(props) {
   const { newsPost } = props

@@ -3,9 +3,9 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import moment from 'moment'
 
-import ContentSignature from '../../ContentSignature'
+import ContentSignature from '../../ContentSignature/ContentSignature'
 import CollabInfo from './CollabInfo'
-import LoadingSpinner from '../../LoadingSpinner'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 
 export default function CollabDetails(props) {
   const collabId = useState(props.location.state.collabId)[0]

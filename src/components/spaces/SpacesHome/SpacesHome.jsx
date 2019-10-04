@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 
 import SpacesList from '../SpacesList/SpacesList'
-import LoadingSpinner from '../../LoadingSpinner'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import { SPACES } from '../../../graphql/constants'
 import './SpacesHome.scss'
 
