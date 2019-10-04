@@ -1,5 +1,7 @@
 import React from 'react'
-import NewsListItem from './NewsListItem'
+
+import NewsListItem from '../NewsListItem/NewsListItem'
+import './NewsList.scss'
 
 export default function NewsList(props) {
   const { newsPosts } = props
@@ -8,9 +10,5 @@ export default function NewsList(props) {
     <NewsListItem key={newsPost.id} newsPost={newsPost} />
   ))
 
-  return (
-    <div className="NewsList__container">
-      <ul className="NewsList__list">{listItems}</ul>
-    </div>
-  )
+  return <ul className="NewsList__list">{listItems}</ul>
 }

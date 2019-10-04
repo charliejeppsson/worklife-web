@@ -9,9 +9,5 @@ export default function EventsList(props) {
     <EventsListItem key={event.id} event={event} />
   ))
 
-  return (
-    <div className="EventsList__container">
-      <ul className="EventsList__list">{listItems}</ul>
-    </div>
-  )
+  return <ul className="EventsList__list">{listItems}</ul>
 }

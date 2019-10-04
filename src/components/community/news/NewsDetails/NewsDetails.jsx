@@ -3,8 +3,9 @@ import moment from 'moment'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
-import ContentSignature from '../../ContentSignature/ContentSignature'
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
+import ContentSignature from '../../../ContentSignature/ContentSignature'
+import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'
+import './NewsDetails.scss'
 
 export default function NewsDetails(props) {
   const newsPostId = useState(props.location.state.newsPostId)[0]
@@ -71,7 +72,7 @@ export default function NewsDetails(props) {
   )
 
   return (
-    <div className="body__container">
+    <div className="NewsDetails">
       {
         loading ? <LoadingSpinner />
         : <div className="NewsDetails__container">

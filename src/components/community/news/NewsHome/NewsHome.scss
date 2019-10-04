@@ -1,0 +1,10 @@
+@import '../../../../assets/styleVariables.scss';
+
+.NewsHome {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: $primaryFont;
+  margin-top: 50px;
+  padding-bottom: 150px;
+}

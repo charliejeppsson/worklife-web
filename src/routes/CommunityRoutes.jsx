@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
 
-import NewsHome from '../components/community/news/NewsHome'
-import NewsDetails from '../components/community/news/NewsDetails'
+import NewsHome from '../components/community/news/NewsHome/NewsHome'
+import NewsDetails from '../components/community/news/NewsDetails/NewsDetails'
 import EventsHome from '../components/community/events/EventsHome/EventsHome'
 import EventDetails from '../components/community/events/EventDetails/EventDetails'
 import CollabsHome from '../components/community/collabs/CollabsHome/CollabsHome'

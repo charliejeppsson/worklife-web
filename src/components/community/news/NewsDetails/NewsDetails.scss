@@ -1,0 +1,56 @@
+@import '../../../../assets/styleVariables.scss';
+
+.NewsDetails {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: $primaryFont;
+  margin-top: 50px;
+  padding-bottom: 150px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__hero {
+    position: relative;
+
+    &__title-background {
+      position: absolute;
+      height: 500px;
+      width: 100vw;
+      background-color: $black;
+      opacity: 0.5;
+    }
+
+    &__title {
+      position: absolute;
+      top: 200px;
+      width: 100vw;
+      text-align: center;
+      font-size: 44px;
+    }
+
+    img {
+      width: 100vw;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    width: 600px;
+
+    h2 {
+      margin-top: 30px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__timestamp {
+    font-style: italic;
+  }
+}

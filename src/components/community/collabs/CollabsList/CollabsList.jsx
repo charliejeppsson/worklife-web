@@ -10,9 +10,5 @@ export default function CollabsList(props) {
     <CollabsListItem key={collab.id} collab={collab} />
   ))
 
-  return (
-    <div className="CollabsList">
-      <ul className="CollabsList__list">{listItems}</ul>
-    </div>
-  )
+  return <ul className="CollabsList__list">{listItems}</ul>
 }

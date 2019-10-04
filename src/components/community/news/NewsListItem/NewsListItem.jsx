@@ -2,10 +2,11 @@ import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
-import EventsListItemContent from '../events/EventsListItemContent/EventsListItemContent'
-import CollabsListItemContent from '../collabs/CollabsListItemContent/CollabsListItemContent'
-import Tag from '../../Tag/Tag'
-import ContentSignature from '../../ContentSignature/ContentSignature'
+import EventsListItemContent from '../../events/EventsListItemContent/EventsListItemContent'
+import CollabsListItemContent from '../../collabs/CollabsListItemContent/CollabsListItemContent'
+import Tag from '../../../Tag/Tag'
+import ContentSignature from '../../../ContentSignature/ContentSignature'
+import './NewsListItem.scss'
 
 export default function NewsListItem(props) {
   const { newsPost } = props
