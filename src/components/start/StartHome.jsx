@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { useMutation } from '@apollo/react-hooks'
+import { useAlert } from 'react-alert'
 
 import { LOGIN_MUTATION } from '../../graphql/constants'
 import AuthContext from '../../context/authContext'
@@ -14,10 +15,11 @@ export default function StartHome(props) {
   const { authLoading, setAuthLoading, setCurrentUser } = useContext(AuthContext)
   const { setActiveNav } = useContext(NavContext)
   const [login, { data, loading, error }] = useMutation(LOGIN_MUTATION)
+  const alert = useAlert()
 
   const handleLogin = () => {
     if (!email && !password) {
-      props.alert.show('Both email and password must be provided.')
+      alert.show('Both email and password must be provided.')
       return
     }
     setAuthLoading(true)
@@ -25,7 +27,7 @@ export default function StartHome(props) {
       .then(res => {
         if (res.errors) {
           console.log('res.error from login mutation: ', res.errors[0].message)
-          props.alert.show(res.errors[0].message)
+          alert.show(res.errors[0].message)
         } else {
           console.log('currentUser from login mutation: ', res.data.login.user)
           setCurrentUser(res.data.login.user)
