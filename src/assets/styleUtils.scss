@@ -1,7 +1,23 @@
+@import './styleVariables.scss';
+
 .text-underscore {
   border-bottom: solid;
 }
 
 .hidden {
   display: none;
+}
+
+.worklife-btn {
+  height: 35px;
+  width: 230px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: $purple;
+  border-color: transparent;
+  cursor: pointer;
+  font-family: $primaryFont;
+  font-size: 12px;
+  font-weight: bold;
+  color: $white;
 }
