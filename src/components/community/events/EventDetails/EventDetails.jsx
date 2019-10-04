@@ -3,9 +3,10 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import moment from 'moment'
 
-import ContentSignature from '../../ContentSignature/ContentSignature'
-import EventInfo from './EventInfo'
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
+import ContentSignature from '../../../ContentSignature/ContentSignature'
+import EventInfo from '../EventInfo/EventInfo'
+import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'
+import './EventDetails.scss'
 
 export default function EventDetails(props) {
   const eventId = useState(props.location.state.eventId)[0]
@@ -57,18 +58,18 @@ export default function EventDetails(props) {
   )
 
   return (
-    <div className="body__container">
+    <div className="EventDetails">
       {
         loading ? <LoadingSpinner />
-        : <div className="NewsDetails__container">
-            <div className="NewsDetails__hero">
-              <div className="NewsDetails__hero__title-background"></div>
-              <h1 className="NewsDetails__hero__title">{data.event.title}</h1> 
+        : <div className="EventDetails__container">
+            <div className="EventDetails__hero">
+              <div className="EventDetails__hero__title-background"></div>
+              <h1 className="EventDetails__hero__title">{data.event.title}</h1> 
               <img src={data.event.image.url} alt={data.event.title} />
             </div>
 
-            <div className="NewsDetails__content">
-              <p className="NewsDetails__timestamp">
+            <div className="EventDetails__content">
+              <p className="EventDetails__timestamp">
                 {formatTimestamp(data.event.createdAt)}
               </p>
               <p>{data.event.description}</p> 

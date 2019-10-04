@@ -1,0 +1,61 @@
+@import '../../../../assets/styleVariables.scss';
+
+.EventsListItem {
+  display: flex;
+  flex-direction: row;
+  height: 220px;
+  width: 640px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 5px;
+
+  &:hover {
+		background-color: $darkGrey;
+	}
+
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 270px;
+
+    img {
+      max-width: 270px;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    span {
+      position: absolute;
+      align-self: flex-end;
+      padding: 3px;
+      font-size: 10px;
+      width: 270px;
+      margin: 0 0 5px 5px;
+    }
+  }
+
+  &__content {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__top-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .created-at {
+        font-size: 12px;
+        margin: 0;
+      }
+    }
+
+    h2 {
+      margin-bottom: 5px;
+      margin-top: 0;
+      font-size: 20px;
+    }
+  }
+}

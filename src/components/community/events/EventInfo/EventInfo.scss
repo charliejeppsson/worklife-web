@@ -1,0 +1,18 @@
+@import '../../../../assets/styleVariables.scss';
+
+.EventInfo {
+  &__details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    svg {
+      width: 15px !important;
+    }
+
+    p {
+      margin: 2px 0 0 8px;
+      font-size: 12px;
+    }
+  }
+}

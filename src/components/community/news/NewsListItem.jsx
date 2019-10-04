@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
-import EventsListItemContent from '../events/EventsListItemContent'
+import EventsListItemContent from '../events/EventsListItemContent/EventsListItemContent'
 import CollabsListItemContent from '../collabs/CollabsListItemContent'
 import Tag from '../../Tag/Tag'
 import ContentSignature from '../../ContentSignature/ContentSignature'

@@ -1,5 +1,6 @@
 import React from 'react'
-import EventsListItem from './EventsListItem'
+import EventsListItem from '../EventsListItem/EventsListItem'
+import './EventsList.scss'
 
 export default function EventsList(props) {
   const { events } = props
@@ -9,8 +10,8 @@ export default function EventsList(props) {
   ))
 
   return (
-    <div className="NewsList__container">
-      <ul className="NewsList__list">{listItems}</ul>
+    <div className="EventsList__container">
+      <ul className="EventsList__list">{listItems}</ul>
     </div>
   )
 }

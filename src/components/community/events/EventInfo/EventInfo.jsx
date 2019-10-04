@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 
+import './EventInfo.scss'
+
 export default function EventInfo(props) {
   const { event } = props
 
@@ -13,13 +15,13 @@ export default function EventInfo(props) {
   }
 
   return (
-    <div>
-      <div className="NewsListItem__content__details">
+    <div className="EventInfo">
+      <div className="EventInfo__details">
         <FontAwesomeIcon icon={faMapPin} />
         <p>{event.space.name}, {event.space.address}</p>
       </div>
 
-      <div className="NewsListItem__content__details">
+      <div className="EventInfo__details">
         <FontAwesomeIcon icon={faClock} />
         <p>{formatEventDate(event.startTime)} - {formatEventDate(event.endTime)}</p>
       </div>

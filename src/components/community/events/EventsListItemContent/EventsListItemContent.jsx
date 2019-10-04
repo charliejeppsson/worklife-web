@@ -1,7 +1,9 @@
 import React from 'react'
-import EventInfo from './EventInfo'
 
-export default function EventListItemContent(props) {
+import EventInfo from '../EventInfo/EventInfo'
+import './EventsListItemContent.scss'
+
+export default function EventsListItemContent(props) {
   const { event } = props
 
   const defaultAvatarUrl = 'https://res.cloudinary.com/charliejeppsson/image/upload/v1567786133/avatar-placeholder_lf2gzx.png'
@@ -18,10 +20,10 @@ export default function EventListItemContent(props) {
   )
 
   return (
-    <div>
+    <div className="EventsListItemContent">
       <EventInfo event={event} />
 
-      <div className="NewsListItem__content__attendants">
+      <div className="EventsListItemContent__attendants">
         {eventAttendants()}
       </div> 
     </div>

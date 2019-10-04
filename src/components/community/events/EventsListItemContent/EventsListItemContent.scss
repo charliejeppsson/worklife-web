@@ -1,0 +1,18 @@
+@import '../../../../assets/styleVariables.scss';
+
+.EventsListItemContent {
+  &__attendants {
+    display: flex;
+    padding-left: 10px;
+    margin-top: 5px;
+
+    img {
+      border-radius: 50px;
+      width: 25px;
+      height: 25px;
+      margin-left: -10px;
+      object-fit: cover;
+      box-shadow: -1px 0 3px $black;
+    }
+  }
+}
