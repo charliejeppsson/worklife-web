@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:700&display=swap');
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: font-url('./fonts/CenturyGothicRegular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Century Gothic Bold';
+  src: font-url('./fonts/CenturyGothicBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardePro-Bk';
+  src: font-url('./fonts/ITCAvantGardePro-Bk.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardePro-Demi';
+  src: font-url('./fonts/ITCAvantGardePro-Demi.otf') format('opentype');
+}
+
+// Fonts
+$primaryFont: 'ITCAvantGardePro-Bk';
+$secondaryFont: 'Century Gothic';
+$primaryFontBold: 'ITCAvantGardePro-Demi';
+$secondaryFontBold: 'Century Gothic Bold';
+$logoFont: 'Permanent Marker', cursive;
+$headerFont: 'Century Gothic';
+
+// Colors
+$white: #F7F7F7;
+$inputWhite: #C7C7CD;
+$placeholderWhite: #8C8C8C;
+$lightGrey: #3A4045;
+$darkGrey: #202326;
+$black: #131313;
+$yellow: #FFBD30;
+$purple: #6801C5;
+$turqoise: #0FA99A;

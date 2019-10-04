@@ -1,49 +1,8 @@
-// VARIABLES ------------------------------------------------------------------
-
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
-
-@font-face {
-  font-family: 'Century Gothic Regular';
-  src: font-url('./assets/fonts/CenturyGothicRegular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Century Gothic Bold';
-  src: font-url('./assets/fonts/CenturyGothicBold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'ITCAvantGardePro-Bk';
-  src: font-url('./assets/fonts/ITCAvantGardePro-Bk.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'ITCAvantGardePro-Demi';
-  src: font-url('./assets/fonts/ITCAvantGardePro-Demi.otf') format('opentype');
-}
-
-$primaryFont: 'ITCAvantGardePro-Bk';
-$secondaryFont: 'Century Gothic';
-$primaryFontBold: 'ITCAvantGardePro-Demi';
-$secondaryFontBold: 'Century Gothic Bold';
-$logoFont: 'Permanent Marker', cursive;
-
-// Colors
-$white: #F7F7F7;
-$inputWhite: #C7C7CD;
-$placeholderWhite: #8C8C8C;
-$lightGrey: #3A4045;
-$darkGrey: #202326;
-$black: #131313;
-$yellow: #FFBD30;
-$purple: #6801C5;
-$turqoise: #0FA99A;
+@import './assets/styleVariables.scss';
+@import './assets/styleUtils.scss';
 
 
 // GENERAL --------------------------------------------------------------------
-
-
 h1, h2, p, a, span, div {
   color: $white !important;
   font-family: $primaryFont;
@@ -51,16 +10,6 @@ h1, h2, p, a, span, div {
 
 a {
   text-decoration: none;
-}
-
-
-// UTILITIES ------------------------------------------------------------------
-.text-underscore {
-  border-bottom: solid;
-}
-
-.hidden {
-  display: none;
 }
 
 
