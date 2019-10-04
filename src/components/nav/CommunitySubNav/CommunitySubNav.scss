@@ -1,0 +1,12 @@
+@import '../../../assets/styleUtils.scss';
+
+.CommunitySubNav {
+  position: absolute;
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    font-size: 14px;
+  }
+}

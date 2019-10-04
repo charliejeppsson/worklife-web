@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import NavContext from '../../context/navContext'
+import NavContext from '../../../context/navContext'
+import './CommunitySubNav.scss'
 
 export default function CommunitySubNav() {
   const { activeNav, setActiveNav } = useContext(NavContext)
 
   if (activeNav.slice(0, 10) === '/community') {
     return (
-      <div className="NavBar__secondary-links">
+      <div className="CommunitySubNav">
         <NavLink
           to="/community/news"
           onClick={() => setActiveNav('/community/news')}

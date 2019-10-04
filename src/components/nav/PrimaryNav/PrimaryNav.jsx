@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import NavContext from '../../context/navContext'
+import NavContext from '../../../context/navContext'
+import './PrimaryNav.scss'
 
 export default function PrimaryNav() {
   const { setActiveNav } = useContext(NavContext)
 
   return (
-    <div className="NavBar__primary-links">
+    <div className="PrimaryNav">
       <NavLink
         to="/community"
         onClick={() => setActiveNav('/community/news')}

@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useMutation, useApolloClient } from '@apollo/react-hooks'
 
-import { LOGOUT_MUTATION } from '../../graphql/constants'
-import AuthContext from '../../context/authContext'
+import { LOGOUT_MUTATION } from '../../../graphql/constants'
+import AuthContext from '../../../context/authContext'
+import './DropdownMenu.scss'
 
 export default function DropdownMenu(props) {
   const { setCurrentUser, setAuthLoading } = useContext(AuthContext)
@@ -26,7 +27,7 @@ export default function DropdownMenu(props) {
   }
 
   return (
-    <div className="NavBar__dropdown">
+    <div className="DropdownMenu">
       <Link to="/account">Account</Link>
 
       <button onClick={() => handleLogout()}>

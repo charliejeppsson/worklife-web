@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react'
 
-import AuthContext from '../../context/authContext'
-import logoHorizontal from '../../assets/images/worklife-logo-2.png'
-import PrimaryNav from './PrimaryNav'
-import CommunitySubNav from './CommunitySubNav'
-import SpacesSubNav from './SpacesSubNav'
-import DropdownMenu from './DropdownMenu'
+import AuthContext from '../../../context/authContext'
+import logoHorizontal from '../../../assets/images/worklife-logo-2.png'
+import PrimaryNav from '../PrimaryNav/PrimaryNav'
+import CommunitySubNav from '../CommunitySubNav/CommunitySubNav'
+import SpacesSubNav from '../SpacesSubNav/SpacesSubNav'
+import DropdownMenu from '../DropdownMenu/DropdownMenu'
+import './NavBar.scss'
 
 export default function NavBar() {
   const [showDropdownMenu, setShowDropdownMenu] = useState(false)

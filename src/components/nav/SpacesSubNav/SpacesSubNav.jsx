@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 
-import NavContext from '../../context/navContext'
+import NavContext from '../../../context/navContext'
+import './SpacesSubNav.scss'
 
 export default function SpacesSubNav() {
   const { activeNav, setActiveNav } = useContext(NavContext)
 
   if (activeNav.slice(0, 7) === '/spaces') {
     return (
-      <div className="NavBar__secondary-links">
+      <div className="SpacesSubNav">
         <NavLink
           to="/spaces/new-booking"
           onClick={() => setActiveNav('/spaces/new-booking')}
