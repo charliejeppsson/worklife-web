@@ -1,7 +1,6 @@
 @import './assets/styleVariables.scss';
 @import './assets/styleUtils.scss';
 
-
 // GENERAL --------------------------------------------------------------------
 h1, h2, p, a, span, div {
   color: $white !important;
@@ -12,22 +11,9 @@ a {
   text-decoration: none;
 }
 
-
-// BODY -----------------------------------------------------------------------
-.body {
+.App {
   &__container {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    font-family: $primaryFont;
-    margin-top: 50px;
-    padding-bottom: 150px;
-  }
-}
-
-.section-header {
-  margin-left: 32px;
-}
-
   }
 }

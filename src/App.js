@@ -44,7 +44,7 @@ export default function App(props) {
 
   if (loading) {
     return (
-      <div className="body__container">
+      <div className="App__container">
         <LoadingSpinner />
       </div>
     )
