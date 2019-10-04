@@ -33,10 +33,6 @@ a {
 // COMMUNITY ------------------------------------------------------------------
 
 .NewsList {
-  &__container {
-
-  }
-
   &__list {
     padding-left: 0;
   }
@@ -139,17 +135,6 @@ a {
         box-shadow: -1px 0 3px $black;
       }
     }
-
-    &__utilities {
-      display: flex;
-      align-items: center;
-      font-size: 20px;
-      margin-bottom: 20px;
-
-      svg {
-        margin-right: 10px;
-      }
-    }
   }
 }
 
@@ -201,110 +186,6 @@ a {
   }
 }
 
-
-// Space ----------------------------------------------------------------------
-.SpacesList {
-  &__search-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 20px;
-
-    input {
-      display: flex;
-      align-items: center;
-      border: none;
-      border-radius: 5px;
-      font-family: $primaryFont;
-      font-size: 14px;
-      background-color: $darkGrey;
-      color: $white;
-      margin-right: 10px;
-    }
-
-    &__text-input {
-      padding: 0 10px 0 10px;
-      height: 35px;
-      width: 240px;
-    }
-
-    &__date-input {
-      padding: 0 10px 0 10px;
-      height: 35px;
-      width: 150px;
-    }
-
-    &__availability-input {
-      display: block;
-      height: 35px;
-      width: 100px;
-      border: none;
-      border-radius: 5px;
-      font-family: $primaryFont;
-      font-size: 14px;
-      background-color: $darkGrey;
-      color: $white;
-      margin-right: 10px;
-      padding: 8px 10px 5px 10px;
-      box-sizing: content-box;
-    }
-
-    .search-btn {
-      display: flex;
-      justify-content: center;
-      width: 100px;
-      margin-top: 0;
-    }
-  }
-}
-
-// MaterialUI DatePicker styling
-.MuiTextField-root {
-  margin-right: 10px !important;
-
-  input {
-    height: 23px;
-    width: 120px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 0 !important;
-  }
-}
-
-.MuiInput-underline {
-  &:before, &:after {
-    content: none !important;
-  }
-}
-
-.MuiPaper-root {
-  background-color: $darkGrey !important;
-  margin-top: 10px;
-}
-
-.MuiPickersCalendarHeader-iconButton {
-  background-color: transparent !important;
-}
-
-.MuiPickersBasePicker-pickerView {
-  p, span, .MuiSvgIcon-root {
-    font-family: $primaryFont;
-  }
-
-  .MuiPickersDay {
-    &-current {
-      p {
-        font-family: $primaryFontBold;
-        font-size: 15px;
-      }
-    }
-
-    &-daySelected {
-      background-color: $purple !important;
-    }
-  }
-}
 
 // Global components ----------------------------------------------------------
 .ContentSignature {
@@ -390,21 +271,4 @@ a {
       margin: 0;
     }
   }
-}
-
-
-
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }

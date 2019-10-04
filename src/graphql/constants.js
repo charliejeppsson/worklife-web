@@ -57,6 +57,30 @@ export const MY_BOOKINGS = gql`
   }
 `
 
+export const SPACES = gql`
+  query spaces {
+    spaces {
+      id
+      name
+      city
+      address
+      type
+      capacity
+      wifi
+      coffee
+      tea
+      snacks
+      meals
+      opensAt
+      closesAt
+      image {
+        url
+        info
+      }
+    }
+  }
+`
+
 // Auth
 export const LOGIN_MUTATION = gql`
   mutation login($email: String!, $password: String!) {

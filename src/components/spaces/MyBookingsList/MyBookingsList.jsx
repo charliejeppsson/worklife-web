@@ -1,6 +1,7 @@
 import React from 'react'
 
-import MyBookingsListItem from './MyBookingsListItem'
+import MyBookingsListItem from '../MyBookingsListItem/MyBookingsListItem'
+import './MyBookingsList.scss'
 
 export default function MyBookingsList(props) {
   const { bookings } = props
@@ -10,11 +11,11 @@ export default function MyBookingsList(props) {
   ))
   
   return (
-    <div className="NewsList__container">
+    <div className="MyBookingsList">
       {
         bookings.length === 0 ?
           <p>Nothing to see here. Carry on.</p>
-          : <ul className="NewsList__list">{listItems}</ul>
+          : <ul className="MyBookingsList__list">{listItems}</ul>
       }
     </div>
   )

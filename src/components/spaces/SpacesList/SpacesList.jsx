@@ -3,7 +3,8 @@ import moment from 'moment'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 
-import SpacesListItem from './SpacesListItem'
+import SpacesListItem from '../SpacesListItem/SpacesListItem'
+import './SpacesList.scss'
 
 export default function SpacesList(props) {
   const [searchTerm, setSearchTerm] = useState('')
@@ -20,11 +21,11 @@ export default function SpacesList(props) {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    console.log(`Search term: ${searchTerm}, date: ${selectedDate}, onlyAvailable: ${onlyAvailable}`)
+    console.log(`Search term: ${searchTerm}, date: ${moment(selectedDate).format('YYYY-MM-DD')}, onlyAvailable: ${onlyAvailable}`)
   }
 
   return (
-    <div className="NewsList__container">
+    <div className="SpacesList">
       <form className="SpacesList__search-form" onSubmit={handleSearch}>
         <input
           type="search"
@@ -60,7 +61,7 @@ export default function SpacesList(props) {
         </button>
       </form>
 
-      <ul className="NewsList__list">{listItems}</ul>
+      <ul className="SpacesList__list">{listItems}</ul>
     </div>
   )
 }

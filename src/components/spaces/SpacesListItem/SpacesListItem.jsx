@@ -1,5 +1,6 @@
 import React from 'react'
 import { useMutation } from '@apollo/react-hooks'
+import { useAlert } from 'react-alert'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faMapPin,
@@ -11,14 +12,15 @@ import {
   faCookieBite,
   faUtensils
 } from '@fortawesome/free-solid-svg-icons'
-import { withAlert } from 'react-alert'
 
-import { CREATE_BOOKING, MY_BOOKINGS } from '../../graphql/constants'
-import LoadingSpinner from '../LoadingSpinner'
+import { CREATE_BOOKING, MY_BOOKINGS } from '../../../graphql/constants'
+import LoadingSpinner from '../../LoadingSpinner'
+import './SpacesListItem.scss'
 
-function SpacesListItem(props) {
+export default function SpacesListItem(props) {
   const { space, selectedDate } = props
   const [createBooking, { loading, error }] = useMutation(CREATE_BOOKING)
+  const alert = useAlert()
 
   const handleNewBooking = async () => {
     await createBooking({
@@ -39,18 +41,18 @@ function SpacesListItem(props) {
     })
   }
 
-  if (loading) { return <li className="NewsListItem"><LoadingSpinner /></li> }
-  if (error) { return props.alert.show('The booking could not be created.') }
+  if (loading) { return <li className="SpacesListItem"><LoadingSpinner /></li> }
+  if (error) { return alert.show('The booking could not be created.') }
 
   return (
-    <li className="NewsListItem">
-      <div className="NewsListItem__image">
+    <li className="SpacesListItem">
+      <div className="SpacesListItem__image">
         <img src={space.image.url} alt="Space"/>
         {space.image.info ? <span>{space.image.info}</span> : null}
       </div>
-      <div className="NewsListItem__content">
+      <div className="SpacesListItem__content">
         <div>
-          <div className="NewsListItem__content__top-row">
+          <div className="SpacesListItem__content__top-row">
             <p className="created-at">
               {space.type.charAt(0).toUpperCase() + space.type.slice(1)}
             </p>
@@ -60,7 +62,7 @@ function SpacesListItem(props) {
         </div>
 
         <div>
-          <div className="NewsListItem__content__utilities">
+          <div className="SpacesListItem__content__utilities">
             {space.coffee && <FontAwesomeIcon icon={faCoffee} />}
             {space.wifi && <FontAwesomeIcon icon={faWifi} />}
             {space.tea && <FontAwesomeIcon icon={faMugHot} />}
@@ -68,22 +70,22 @@ function SpacesListItem(props) {
             {space.meals && <FontAwesomeIcon icon={faUtensils} />}
           </div>
 
-          <div className="NewsListItem__content__details">
+          <div className="SpacesListItem__content__details">
             <FontAwesomeIcon icon={faMapPin} />
             <p>{space.address}, {space.city}</p>
           </div>
 
-          <div className="NewsListItem__content__details">
+          <div className="SpacesListItem__content__details">
             <FontAwesomeIcon icon={faChair} />
             <p>Capacity: {space.capacity}</p> 
           </div>
 
-          <div className="NewsListItem__content__details">
+          <div className="SpacesListItem__content__details">
             <FontAwesomeIcon icon={faClock} />
             <p>{space.opensAt} - {space.closesAt}</p>
           </div>
 
-          <div className="NewsListItem__content__booking-btn">
+          <div className="SpacesListItem__content__booking-btn">
             <button
               className="worklife-btn"
               onClick={() => handleNewBooking()}
@@ -96,5 +98,3 @@ function SpacesListItem(props) {
     </li>
   )
 }
-
-export default withAlert()(SpacesListItem)

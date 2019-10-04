@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Redirect, Switch } from 'react-router-dom'
 
-import SpacesHome from '../components/spaces/SpacesHome'
-import MyBookingsHome from '../components/spaces/MyBookingsHome'
+import SpacesHome from '../components/spaces/SpacesHome/SpacesHome'
+import MyBookingsHome from '../components/spaces/MyBookingsHome/MyBookingsHome'
 
 export default function CommunityRoutes() {
   return (
