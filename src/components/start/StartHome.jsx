@@ -6,6 +6,7 @@ import AuthContext from '../../context/authContext'
 import NavContext from '../../context/navContext'
 import LoadingSpinner from '../LoadingSpinner'
 import logoHorizontal from '../../assets/images/worklife-logo-2.png'
+import './StartHome.scss'
 
 export default function StartHome(props) {
   const [email, setEmail] = useState(null)
