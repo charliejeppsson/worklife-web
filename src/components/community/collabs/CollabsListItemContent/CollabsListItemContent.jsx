@@ -1,7 +1,8 @@
 import React from 'react'
-import CollabInfo from './CollabInfo'
+import CollabInfo from '../CollabInfo/CollabInfo'
+import './CollabsListItemContent.scss'
 
-export default function NewsListItemEventContent(props) {
+export default function CollabsListItemContent(props) {
   const { collab } = props
 
   const defaultAvatarUrl = 'https://res.cloudinary.com/charliejeppsson/image/upload/v1567786133/avatar-placeholder_lf2gzx.png'
@@ -18,10 +19,10 @@ export default function NewsListItemEventContent(props) {
   )
 
   return (
-    <div>
+    <div className="CollabsListItemContent">
       <CollabInfo collab={collab} />
 
-      <div className="NewsListItem__content__attendants">
+      <div className="CollabsListItemContent__attendants">
         {collabParticipants()}
       </div> 
     </div>

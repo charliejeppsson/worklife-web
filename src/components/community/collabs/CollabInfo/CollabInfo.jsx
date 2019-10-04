@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 
+import './CollabInfo.scss'
+
 export default function CollabInfo(props) {
   const { collab } = props
 
@@ -28,12 +30,12 @@ export default function CollabInfo(props) {
 
   return (
     <div>
-      <div className="NewsListItem__content__details">
+      <div className="CollabInfo__details">
         <FontAwesomeIcon icon={faClock} />
         <p>{formatDuration(collab.duration)}</p>
       </div>
 
-      <div className="NewsListItem__content__details">
+      <div className="CollabInfo__details">
         <FontAwesomeIcon icon={faDollarSign} />
         <p>{formatCompensation(collab.compensation)}</p>
       </div>

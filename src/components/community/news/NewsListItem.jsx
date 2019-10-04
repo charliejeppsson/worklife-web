@@ -3,7 +3,7 @@ import moment from 'moment'
 import { Link } from 'react-router-dom'
 
 import EventsListItemContent from '../events/EventsListItemContent/EventsListItemContent'
-import CollabsListItemContent from '../collabs/CollabsListItemContent'
+import CollabsListItemContent from '../collabs/CollabsListItemContent/CollabsListItemContent'
 import Tag from '../../Tag/Tag'
 import ContentSignature from '../../ContentSignature/ContentSignature'
 

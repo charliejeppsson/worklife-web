@@ -1,5 +1,7 @@
 import React from 'react'
-import CollabsListItem from './CollabsListItem'
+
+import CollabsListItem from '../CollabsListItem/CollabsListItem'
+import './CollabsList.scss'
 
 export default function CollabsList(props) {
   const { collabs } = props
@@ -9,8 +11,8 @@ export default function CollabsList(props) {
   ))
 
   return (
-    <div className="NewsList__container">
-      <ul className="NewsList__list">{listItems}</ul>
+    <div className="CollabsList">
+      <ul className="CollabsList__list">{listItems}</ul>
     </div>
   )
 }

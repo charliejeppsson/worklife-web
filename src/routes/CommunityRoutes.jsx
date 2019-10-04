@@ -5,8 +5,8 @@ import NewsHome from '../components/community/news/NewsHome'
 import NewsDetails from '../components/community/news/NewsDetails'
 import EventsHome from '../components/community/events/EventsHome/EventsHome'
 import EventDetails from '../components/community/events/EventDetails/EventDetails'
-import CollabsHome from '../components/community/collabs/CollabsHome'
-import CollabDetails from '../components/community/collabs/CollabDetails'
+import CollabsHome from '../components/community/collabs/CollabsHome/CollabsHome'
+import CollabDetails from '../components/community/collabs/CollabDetails/CollabDetails'
 
 export default function CommunityRoutes() {
   return (

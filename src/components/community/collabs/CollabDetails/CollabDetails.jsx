@@ -3,9 +3,10 @@ import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import moment from 'moment'
 
-import ContentSignature from '../../ContentSignature/ContentSignature'
-import CollabInfo from './CollabInfo'
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
+import CollabInfo from '../CollabInfo/CollabInfo'
+import ContentSignature from '../../../ContentSignature/ContentSignature'
+import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'
+import './CollabDetails.scss'
 
 export default function CollabDetails(props) {
   const collabId = useState(props.location.state.collabId)[0]
@@ -53,18 +54,18 @@ export default function CollabDetails(props) {
   )
 
   return (
-    <div className="body__container">
+    <div className="CollabDetails">
       {
         loading ? <LoadingSpinner />
-        : <div className="NewsDetails__container">
-            <div className="NewsDetails__hero">
-              <div className="NewsDetails__hero__title-background"></div>
-              <h1 className="NewsDetails__hero__title">{data.collab.title}</h1> 
+        : <div className="CollabDetails__container">
+            <div className="CollabDetails__hero">
+              <div className="CollabDetails__hero__title-background"></div>
+              <h1 className="CollabDetails__hero__title">{data.collab.title}</h1> 
               <img src={data.collab.image.url} alt={data.collab.title} />
             </div>
 
-            <div className="NewsDetails__content">
-              <p className="NewsDetails__timestamp">
+            <div className="CollabDetails__content">
+              <p className="CollabDetails__timestamp">
                 {formatTimestamp(data.collab.createdAt)}
               </p>
               <p>{data.collab.description}</p> 
