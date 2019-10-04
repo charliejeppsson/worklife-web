@@ -4,16 +4,14 @@ import { useAlert } from 'react-alert'
 
 import { LOGIN_MUTATION } from '../../graphql/constants'
 import AuthContext from '../../context/authContext'
-import NavContext from '../../context/navContext'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import logoHorizontal from '../../assets/images/worklife-logo-2.png'
 import './StartHome.scss'
 
-export default function StartHome(props) {
+export default function StartHome() {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const { authLoading, setAuthLoading, setCurrentUser } = useContext(AuthContext)
-  const { setActiveNav } = useContext(NavContext)
   const [login, { data, loading, error }] = useMutation(LOGIN_MUTATION)
   const alert = useAlert()
 
@@ -34,7 +32,6 @@ export default function StartHome(props) {
           localStorage.setItem('accessToken', res.data.login.accessToken)
         }
         setAuthLoading(false)
-        setActiveNav('/community/news')
       })
       .catch(err => {
         console.log('err from login mutation: ', err)

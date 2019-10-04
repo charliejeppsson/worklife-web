@@ -8,7 +8,7 @@ import SpacesSubNav from '../SpacesSubNav/SpacesSubNav'
 import DropdownMenu from '../DropdownMenu/DropdownMenu'
 import './NavBar.scss'
 
-export default function NavBar() {
+export default function NavBar(props) {
   const [showDropdownMenu, setShowDropdownMenu] = useState(false)
   const { currentUser } = useContext(AuthContext)
 
@@ -18,8 +18,8 @@ export default function NavBar() {
 
       <div className="NavBar__links">
         <PrimaryNav />
-        <CommunitySubNav />
-        <SpacesSubNav />
+        <CommunitySubNav activeNav={props.location.pathname} />
+        <SpacesSubNav activeNav={props.location.pathname} />
       </div>
 
       <div className="NavBar__avatar">

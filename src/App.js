@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 
 import AuthContext from './context/authContext'
-import NavContext from './context/navContext'
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
-import NavBar from './components/nav/NavBar/NavBar'
-import StartHome from './components/start/StartHome'
-import CommunityRoutes from './routes/CommunityRoutes'
-import SpacesRoutes from './routes/SpacesRoutes'
-import BenefitsRoutes from './routes/BenefitsRoutes'
+import Router from './Router'
 import './App.scss'
 
 export default function App(props) {
-  const [activeNav, setActiveNav] = useState('/community/news')
   const [currentUser, setCurrentUser] = useState({})
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -40,8 +33,6 @@ export default function App(props) {
       })
   }
 
-  const accessToken = localStorage.getItem('accessToken')
-
   if (loading) {
     return (
       <div className="App__container">
@@ -50,40 +41,20 @@ export default function App(props) {
     )
   } else {
     return (
-      <BrowserRouter>
-        <AuthContext.Provider value={{
-          currentUser,
-          setCurrentUser: (currentUser) => setCurrentUser(currentUser),
-          authLoading: loading,
-          setAuthLoading: (loading) => setLoading(loading),
-          authError: error,
-          setAuthError: (error) =>  setError(error)
-        }}>
-          <NavContext.Provider value={{
-            activeNav,
-            setActiveNav: (activeNav) => setActiveNav(activeNav)
-          }}>
-            <Switch>
-              {
-                accessToken && currentUser && !error ? (
-                  <React.Fragment>
-                    <NavBar />
-                    <Redirect exact from="/login" to="/community/news" />
-                    <CommunityRoutes />
-                    <SpacesRoutes />
-                    <BenefitsRoutes />
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                    <Redirect to="/login" exact />
-                    <Route exact path="/login" component={StartHome} />
-                  </React.Fragment>
-                )
-              }
-            </Switch>  
-          </NavContext.Provider>
-        </AuthContext.Provider>
-      </BrowserRouter>
+      <AuthContext.Provider value={{
+        currentUser,
+        setCurrentUser: (currentUser) => setCurrentUser(currentUser),
+        authLoading: loading,
+        setAuthLoading: (loading) => setLoading(loading),
+        authError: error,
+        setAuthError: (error) =>  setError(error)
+      }}>
+        <Router
+          accessToken={localStorage.getItem('accessToken')}
+          currentUser={currentUser}
+          error={error}
+        />
+      </AuthContext.Provider>
     )
   }
 }
