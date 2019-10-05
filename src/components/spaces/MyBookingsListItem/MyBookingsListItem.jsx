@@ -4,6 +4,7 @@ import { useAlert } from 'react-alert'
 import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin, faClock, faChair } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 
 import { CANCEL_BOOKING, MY_BOOKINGS } from '../../../graphql/constants'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
@@ -90,4 +91,26 @@ export default function MyBookingsListItem(props) {
       </div>
     </li>
   )
+}
+
+MyBookingsListItem.propTypes = {
+  booking: PropTypes.shape({
+    id: PropTypes.string,
+    date: PropTypes.string,
+    userId: PropTypes.string,
+    space: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      address: PropTypes.string,
+      city: PropTypes.string,
+      type: PropTypes.string,
+      capacity: PropTypes.number,
+      opensAt: PropTypes.string,
+      closesAt: PropTypes.string,
+      image: PropTypes.shape({
+        url: PropTypes.string,
+        info: PropTypes.string
+      })
+    })
+  })
 }

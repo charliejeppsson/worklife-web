@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import './ContentSignature.scss'
 
 export default function ContentSignature(props) {
@@ -24,4 +26,14 @@ export default function ContentSignature(props) {
       </div>
     </div>
   )
+}
+
+ContentSignature.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    title: PropTypes.string,
+    avatar: PropTypes.string
+  })
 }

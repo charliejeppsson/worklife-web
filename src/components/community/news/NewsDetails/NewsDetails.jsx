@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
+import PropTypes from 'prop-types'
 
 import ContentSignature from '../../../ContentSignature/ContentSignature'
 import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'
@@ -94,4 +95,12 @@ export default function NewsDetails(props) {
       }
     </div>
   )
+}
+
+NewsDetails.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      newsPostId: PropTypes.string
+    })
+  })
 }

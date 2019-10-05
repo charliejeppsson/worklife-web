@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import './Tag.scss'
 
 export default function Tag(props) {
@@ -11,4 +13,6 @@ export default function Tag(props) {
   )
 }
 
-
+Tag.propTypes = {
+  title: PropTypes.string
+}

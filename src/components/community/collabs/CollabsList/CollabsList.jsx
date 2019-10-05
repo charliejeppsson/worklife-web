@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import CollabsListItem from '../CollabsListItem/CollabsListItem'
 import './CollabsList.scss'
@@ -11,4 +12,8 @@ export default function CollabsList(props) {
   ))
 
   return <ul className="CollabsList__list">{listItems}</ul>
+}
+
+CollabsList.propTypes = {
+  collabs: PropTypes.arrayOf(PropTypes.object)
 }

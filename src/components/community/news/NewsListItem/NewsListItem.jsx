@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import EventsListItemContent from '../../events/EventsListItemContent/EventsListItemContent'
 import CollabsListItemContent from '../../collabs/CollabsListItemContent/CollabsListItemContent'
@@ -52,4 +53,26 @@ export default function NewsListItem(props) {
       </li>
     </Link>
   )
+}
+
+NewsListItem.propTypes = {
+  newsPost: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.shape({
+      id: PropTypes.string,
+      url: PropTypes.string,
+      info: PropTypes.string
+    }),
+    user: PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      title: PropTypes.string,
+      avatar: PropTypes.string
+    }),
+    collab: PropTypes.object,
+    event: PropTypes.object,
+    createdAt: PropTypes.string
+  })
 }

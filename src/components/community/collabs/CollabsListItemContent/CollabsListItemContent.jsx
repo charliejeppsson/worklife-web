@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import CollabInfo from '../CollabInfo/CollabInfo'
 import './CollabsListItemContent.scss'
 
@@ -20,11 +22,34 @@ export default function CollabsListItemContent(props) {
 
   return (
     <div className="CollabsListItemContent">
-      <CollabInfo collab={collab} />
+      <CollabInfo duration={collab.duration} compensation={collab.compensation} />
 
       <div className="CollabsListItemContent__attendants">
         {collabParticipants()}
       </div> 
     </div>
   )
+}
+
+CollabsListItemContent.propTypes = {
+  collab: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    duration: PropTypes.number,
+    compensation: PropTypes.number,
+    participants: PropTypes.arrayOf(PropTypes.object),
+    image: PropTypes.shape({
+      id: PropTypes.string,
+      url: PropTypes.string,
+      info: PropTypes.string
+    }),
+    user: PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      title: PropTypes.string,
+      avatar: PropTypes.string
+    }),
+    createdAt: PropTypes.string
+  })
 }

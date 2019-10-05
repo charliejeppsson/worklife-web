@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 
 import CollabInfo from '../CollabInfo/CollabInfo'
 import ContentSignature from '../../../ContentSignature/ContentSignature'
@@ -70,7 +71,10 @@ export default function CollabDetails(props) {
               </p>
               <p>{data.collab.description}</p> 
 
-              <CollabInfo collab={data.collab} />
+              <CollabInfo
+                duration={data.collab.duration}
+                compensation={data.collab.compensation}
+              />
 
               <h2>Initiator</h2>
               <ContentSignature key={data.collab.user.id} user={data.collab.user} />
@@ -82,4 +86,12 @@ export default function CollabDetails(props) {
       }
     </div>
   )
+}
+
+CollabDetails.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      collabId: PropTypes.string
+    })
+  })
 }

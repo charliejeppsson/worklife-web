@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
+import PropTypes from 'prop-types'
 
 import SpacesListItem from '../SpacesListItem/SpacesListItem'
 import './SpacesList.scss'
@@ -64,4 +65,8 @@ export default function SpacesList(props) {
       <ul className="SpacesList__list">{listItems}</ul>
     </div>
   )
+}
+
+SpacesList.propTypes = {
+  spaces: PropTypes.arrayOf(PropTypes.object)
 }

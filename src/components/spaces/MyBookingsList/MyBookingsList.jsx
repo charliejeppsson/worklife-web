@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import MyBookingsListItem from '../MyBookingsListItem/MyBookingsListItem'
 import './MyBookingsList.scss'
@@ -19,4 +20,8 @@ export default function MyBookingsList(props) {
       }
     </div>
   )
+}
+
+MyBookingsList.propTypes = {
+  bookings: PropTypes.arrayOf(PropTypes.object)
 }

@@ -1,5 +1,7 @@
 import React from 'react'
 import moment from 'moment'
+import PropTypes from 'prop-types'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin } from '@fortawesome/free-solid-svg-icons'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
@@ -27,4 +29,15 @@ export default function EventInfo(props) {
       </div>
     </div>
   )
+}
+
+EventInfo.propTypes = {
+  event: PropTypes.shape({
+    startTime: PropTypes.string,
+    endTime: PropTypes.string,
+    space: PropTypes.shape({
+      name: PropTypes.string,
+      address: PropTypes.string
+    })
+  })
 }

@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import EventsListItem from '../EventsListItem/EventsListItem'
 import './EventsList.scss'
 
@@ -10,4 +12,8 @@ export default function EventsList(props) {
   ))
 
   return <ul className="EventsList__list">{listItems}</ul>
+}
+
+EventsList.propTypes = {
+  events: PropTypes.arrayOf(PropTypes.object)
 }

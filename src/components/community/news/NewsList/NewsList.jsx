@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import NewsListItem from '../NewsListItem/NewsListItem'
 import './NewsList.scss'
@@ -11,4 +12,8 @@ export default function NewsList(props) {
   ))
 
   return <ul className="NewsList__list">{listItems}</ul>
+}
+
+NewsList.propTypes = {
+  newsPosts: PropTypes.arrayOf(PropTypes.object)
 }

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import PropTypes from 'prop-types'
 
 import AuthContext from '../../../context/authContext'
 import logoHorizontal from '../../../assets/images/worklife-logo-2.png'
@@ -31,4 +32,10 @@ export default function NavBar(props) {
       {showDropdownMenu && <DropdownMenu />}
     </nav> 
   )
+}
+
+NavBar.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  })
 }

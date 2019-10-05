@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
@@ -7,7 +8,7 @@ import { faClock } from '@fortawesome/free-solid-svg-icons'
 import './CollabInfo.scss'
 
 export default function CollabInfo(props) {
-  const { collab } = props
+  const { duration, compensation } = props
 
   const formatDuration = duration => {
     const monthAmount = Math.ceil(duration / 30)
@@ -32,13 +33,18 @@ export default function CollabInfo(props) {
     <div>
       <div className="CollabInfo__details">
         <FontAwesomeIcon icon={faClock} />
-        <p>{formatDuration(collab.duration)}</p>
+        <p>{formatDuration(duration)}</p>
       </div>
 
       <div className="CollabInfo__details">
         <FontAwesomeIcon icon={faDollarSign} />
-        <p>{formatCompensation(collab.compensation)}</p>
+        <p>{formatCompensation(compensation)}</p>
       </div>
     </div>
   )
+}
+
+CollabInfo.propTypes = {
+  duration: PropTypes.number,
+  compensation: PropTypes.number
 }

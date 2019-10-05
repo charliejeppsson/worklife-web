@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import EventInfo from '../EventInfo/EventInfo'
 import './EventsListItemContent.scss'
@@ -28,4 +29,27 @@ export default function EventsListItemContent(props) {
       </div> 
     </div>
   )
+}
+
+EventsListItemContent.propTypes = {
+  event: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    startTime: PropTypes.string,
+    endTime: PropTypes.string,
+    attendants: PropTypes.arrayOf(PropTypes.object),
+    image: PropTypes.shape({
+      id: PropTypes.string,
+      url: PropTypes.string,
+      info: PropTypes.string
+    }),
+    user: PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      title: PropTypes.string,
+      avatar: PropTypes.string
+    }),
+    createdAt: PropTypes.string
+  })
 }

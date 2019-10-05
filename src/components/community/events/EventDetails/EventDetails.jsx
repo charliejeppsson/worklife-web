@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 
 import ContentSignature from '../../../ContentSignature/ContentSignature'
 import EventInfo from '../EventInfo/EventInfo'
@@ -86,4 +87,12 @@ export default function EventDetails(props) {
       }
     </div>
   )
+}
+
+EventDetails.propTypes = {
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      eventId: PropTypes.string
+    })
+  })
 }

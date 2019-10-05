@@ -12,6 +12,7 @@ import {
   faCookieBite,
   faUtensils
 } from '@fortawesome/free-solid-svg-icons'
+import PropTypes from 'prop-types'
 
 import { CREATE_BOOKING, MY_BOOKINGS } from '../../../graphql/constants'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
@@ -97,4 +98,22 @@ export default function SpacesListItem(props) {
       </div>
     </li>
   )
+}
+
+SpacesListItem.propTypes = {
+  selectedDate: PropTypes.string,
+  space: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    address: PropTypes.string,
+    city: PropTypes.string,
+    type: PropTypes.string,
+    capacity: PropTypes.number,
+    opensAt: PropTypes.string,
+    closesAt: PropTypes.string,
+    image: PropTypes.shape({
+      url: PropTypes.string,
+      info: PropTypes.string
+    })
+  })
 }

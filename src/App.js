@@ -5,7 +5,7 @@ import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner'
 import Router from './Router'
 import './App.scss'
 
-export default function App(props) {
+export default function App() {
   const [currentUser, setCurrentUser] = useState({})
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)

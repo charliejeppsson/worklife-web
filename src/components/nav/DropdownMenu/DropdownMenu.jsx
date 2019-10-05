@@ -6,7 +6,7 @@ import { LOGOUT_MUTATION } from '../../../graphql/constants'
 import AuthContext from '../../../context/authContext'
 import './DropdownMenu.scss'
 
-export default function DropdownMenu(props) {
+export default function DropdownMenu() {
   const { setCurrentUser, setAuthLoading } = useContext(AuthContext)
   const [logout, { data, loading, error }] = useMutation(LOGOUT_MUTATION)
   const client = useApolloClient()
