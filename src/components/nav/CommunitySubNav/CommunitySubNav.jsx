@@ -10,7 +10,7 @@ export default function CommunitySubNav({ activeNav }) {
       <div className="CommunitySubNav">
         <NavLink
           to="/community/news"
-          isActive={() => activeNav === '/community/news'}
+          isActive={() => activeNav.slice(0, 15) === '/community/news'}
           activeClassName="text-underscore"
         >
           News
@@ -18,7 +18,7 @@ export default function CommunitySubNav({ activeNav }) {
 
         <NavLink
           to="/community/events"
-          isActive={() => activeNav === '/community/events'}
+          isActive={() => activeNav.slice(0, 17) === '/community/events'}
           activeClassName="text-underscore"
         >
           Events
@@ -26,7 +26,7 @@ export default function CommunitySubNav({ activeNav }) {
 
         <NavLink
           to="/community/collabs"
-          isActive={() => activeNav === '/community/collabs'}
+          isActive={() => activeNav.slice(0, 18) === '/community/collabs'}
           activeClassName="text-underscore"
         >
           Collabs
