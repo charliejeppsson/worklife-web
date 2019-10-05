@@ -90,6 +90,55 @@ export const EVENTS = gql`
     }
   }
 `
+
+export const CREATE_EVENT = gql`
+  mutation createEvent(
+    $title: String!,
+    $description: String!,
+    $startTime: Date!,
+    $endTime: Date!,
+    $imageUrl: String!,
+    $spaceId: ID!
+  ) {
+    createEvent(
+      title: $title,
+      description: $description,
+      startTime: $startTime,
+      endTime: $endTime,
+      imageUrl: $imageUrl,
+      spaceId: $spaceId
+    ) {
+      id
+      title
+      description
+      startTime
+      endTime
+      createdAt
+      attendants {
+        id
+        firstName
+        lastName
+        avatar
+      }
+      image {
+        url
+        info
+      }
+      space {
+        name
+        address
+      }
+      user {
+        firstName
+        lastName
+        title
+        avatar
+      }
+    }
+  }
+`
+
+// Spaces
 export const SPACES = gql`
   query spaces {
     spaces {

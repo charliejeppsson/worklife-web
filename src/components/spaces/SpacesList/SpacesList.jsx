@@ -52,7 +52,7 @@ export default function SpacesList(props) {
           value={onlyAvailable}
           onChange={(e) => setOnlyAvailable(e.target.value)}
         >
-          <option value="">--Please choose an option--</option>
+          <option value="">-- Please choose an option --</option>
           <option value={false}>All</option>
           <option value={true}>Available</option>
         </select>

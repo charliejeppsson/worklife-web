@@ -25,7 +25,7 @@ export default function EventsListItemContent(props) {
       <EventInfo event={event} />
 
       <div className="EventsListItemContent__attendants">
-        {eventAttendants()}
+        {event.attendants ? eventAttendants() : null}
       </div> 
     </div>
   )

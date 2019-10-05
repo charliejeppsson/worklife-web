@@ -7,4 +7,22 @@
   font-family: $primaryFont;
   margin-top: 50px;
   padding-bottom: 150px;
+
+  &__add-event-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 38px;
+    top: 90px;
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background-color: $purple;
+    color: $white;
+    font-size: 30px;
+    padding-bottom: 7px;
+    cursor: pointer;
+  }
 }
