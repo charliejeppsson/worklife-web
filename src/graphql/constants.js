@@ -57,6 +57,39 @@ export const MY_BOOKINGS = gql`
   }
 `
 
+// Events
+export const EVENTS = gql`
+  query events {
+    events {
+      id
+      title
+      description
+      startTime
+      endTime
+      createdAt
+      attendants {
+        id
+        firstName
+        lastName
+        avatar
+      }
+      image {
+        url
+        info
+      }
+      space {
+        name
+        address
+      }
+      user {
+        firstName
+        lastName
+        title
+        avatar
+      }
+    }
+  }
+`
 export const SPACES = gql`
   query spaces {
     spaces {
