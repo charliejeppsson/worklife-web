@@ -54,14 +54,14 @@ export default function EventForm(props) {
       }
     })
 
-    props.toggleModal(false)
+    props.closeModal()
   }
 
   if (loading) { return <li className="SpacesListItem"><LoadingSpinner /></li> }
   if (error) { return alert.show('The booking could not be created.') }
 
   return (
-    <div className="EventForm__modal">
+    <div ref={props.wrapperRef} className="EventForm__modal">
       <h2>Create event</h2> 
 
       <form className="EventForm__form">
@@ -152,5 +152,6 @@ export default function EventForm(props) {
 }
 
 EventForm.propTypes = {
-  toggleModal: PropTypes.func
+  closeModal: PropTypes.func,
+  wrapperRef: PropTypes.object
 }

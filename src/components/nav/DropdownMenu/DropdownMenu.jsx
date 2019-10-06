@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useMutation, useApolloClient } from '@apollo/react-hooks'
+import PropTypes from 'prop-types'
 
 import { LOGOUT_MUTATION } from '../../../graphql/constants'
 import AuthContext from '../../../context/authContext'
 import './DropdownMenu.scss'
 
-export default function DropdownMenu() {
+export default function DropdownMenu(props) {
   const { setCurrentUser, setAuthLoading } = useContext(AuthContext)
   const [logout, { data, loading, error }] = useMutation(LOGOUT_MUTATION)
   const client = useApolloClient()
@@ -27,7 +28,7 @@ export default function DropdownMenu() {
   }
 
   return (
-    <div className="DropdownMenu">
+    <div ref={props.wrapperRef} className="DropdownMenu">
       <Link to="/account">Account</Link>
 
       <button onClick={() => handleLogout()}>
@@ -35,4 +36,8 @@ export default function DropdownMenu() {
       </button>
     </div>
   )
+}
+
+DropdownMenu.propTypes = {
+  wrapperRef: PropTypes.object
 }

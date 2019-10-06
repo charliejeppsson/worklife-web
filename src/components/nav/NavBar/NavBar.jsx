@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import AuthContext from '../../../context/authContext'
@@ -7,11 +7,14 @@ import PrimaryNav from '../PrimaryNav/PrimaryNav'
 import CommunitySubNav from '../CommunitySubNav/CommunitySubNav'
 import SpacesSubNav from '../SpacesSubNav/SpacesSubNav'
 import DropdownMenu from '../DropdownMenu/DropdownMenu'
+import useOutsideClick from '../../../utils/useOutsideClick'
 import './NavBar.scss'
 
 export default function NavBar(props) {
   const [showDropdownMenu, setShowDropdownMenu] = useState(false)
   const { currentUser } = useContext(AuthContext)
+  const wrapperRef = useRef(null)
+  useOutsideClick(wrapperRef, () => setShowDropdownMenu(false))
 
   return (
     <nav className="NavBar__container">
@@ -29,7 +32,7 @@ export default function NavBar(props) {
         </button>
       </div>
       
-      {showDropdownMenu && <DropdownMenu />}
+      {showDropdownMenu && <DropdownMenu wrapperRef={wrapperRef} />}
     </nav> 
   )
 }
