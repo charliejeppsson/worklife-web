@@ -57,7 +57,7 @@ export default function EventDetails(props) {
 
   const updateEventCache = (store, updatedEvent) => {
     try { // Update event object in Apollo cache/store (everywhere)
-      store.writeQuery({ query: EVENT, data: updatedEvent })
+      store.writeQuery({ query: EVENT, data: { event: updatedEvent } })
     } catch(err) {
       console.warn(err)
     }
