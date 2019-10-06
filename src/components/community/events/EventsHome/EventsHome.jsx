@@ -14,7 +14,7 @@ export default function EventsHome() {
   const wrapperRef = useRef(null)
   useOutsideClick(wrapperRef, () => setShowCreateModal(false))
 
-  if (error) return <p>Error :(</p>
+  if (error) { return <p>Error :(</p> }
 
   return (
     <div className="EventsHome">
