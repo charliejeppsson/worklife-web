@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks'
 
 import SpacesList from '../SpacesList/SpacesList'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
-import { SPACES } from '../../../graphql/constants'
+import { SPACES } from '../../../graphql/queries/space'
 import './SpacesHome.scss'
 
 export default function SpacesHome() {

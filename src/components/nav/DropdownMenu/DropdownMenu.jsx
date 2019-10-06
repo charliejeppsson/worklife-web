@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useMutation, useApolloClient } from '@apollo/react-hooks'
 import PropTypes from 'prop-types'
 
-import { LOGOUT_MUTATION } from '../../../graphql/constants'
+import { LOGOUT_MUTATION } from '../../../graphql/mutations/auth'
 import AuthContext from '../../../context/authContext'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import './DropdownMenu.scss'

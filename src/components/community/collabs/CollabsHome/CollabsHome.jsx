@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 
-import { COLLABS } from '../../../../graphql/constants'
+import { COLLABS } from '../../../../graphql/queries/collab'
 import CollabForm from '../CollabForm/CollabForm'
 import CollabsList from '../CollabsList/CollabsList'
 import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'

@@ -1,65 +1,13 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
 
+import { NEWS_POSTS } from '../../../../graphql/queries/newsPost'
 import NewsList from '../NewsList/NewsList'
 import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'
 import './NewsHome.scss'
 
 export default function NewsHome() {
-  const { loading, error, data } = useQuery(gql`
-    {
-      newsPosts {
-        id
-        title
-        description
-        createdAt
-        userId
-        user {
-          id
-          firstName
-          lastName
-          title
-          avatar
-        }
-        imageId
-        image {
-          url
-          info
-        }
-        eventId
-        event {
-          title
-          description
-          startTime
-          endTime
-          space {
-            name
-            address
-          }
-          attendants {
-            id
-            firstName
-            lastName
-            avatar
-          }
-        }
-        collabId
-        collab {
-          title
-          description
-          duration
-          compensation
-          participants {
-            id
-            firstName
-            lastName
-            avatar
-          }
-        }
-      }
-    }
-  `)
+  const { loading, error, data } = useQuery(NEWS_POSTS)
 
   if (error) return <p>Error :(</p>
 

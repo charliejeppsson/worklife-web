@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { useAlert } from 'react-alert'
 
-import { LOGIN_MUTATION } from '../../graphql/constants'
+import { LOGIN_MUTATION } from '../../graphql/mutations/auth'
 import AuthContext from '../../context/authContext'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import logoHorizontal from '../../assets/images/worklife-logo-2.png'

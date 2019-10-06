@@ -1,76 +1,24 @@
 import React, { useState } from 'react'
 import moment from 'moment'
 import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
 import PropTypes from 'prop-types'
 
+import { NEWS_POST } from '../../../../graphql/queries/newsPost'
 import ContentSignature from '../../../ContentSignature/ContentSignature'
 import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'
 import './NewsDetails.scss'
 
 export default function NewsDetails(props) {
   const newsPostId = useState(props.location.state.newsPostId)[0]
-
-  const { loading, error, data } = useQuery(gql`
-    {
-      newsPost(id: ${newsPostId}) {
-        id
-        title
-        description
-        content
-        createdAt
-        userId
-        user {
-          id
-          firstName
-          lastName
-          title
-          avatar
-        }
-        imageId
-        image {
-          url
-          info
-        }
-        eventId
-        event {
-          title
-          description
-          startTime
-          endTime
-          space {
-            name
-            address
-          }
-          attendants {
-            id
-            firstName
-            lastName
-            avatar
-          }
-        }
-        collabId
-        collab {
-          title
-          description
-          duration
-          compensation
-          participants {
-            id
-            firstName
-            lastName
-            avatar
-          }
-        }
-      }
-    }
-  `)
-
-  if (error) return <p>Error :(</p>
+  const { loading, error, data } = useQuery(NEWS_POST, {
+    variables: { id: newsPostId }
+  })
 
   const formatTimestamp = (date) => (
     moment(new Date(date)).format('MMM Do YYYY')
   )
+
+  if (error) return <p>Error :(</p>
 
   return (
     <div className="NewsDetails">

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 
-import { EVENTS } from '../../../../graphql/constants'
+import { EVENTS } from '../../../../graphql/queries/event'
 import EventForm from '../EventForm/EventForm'
 import EventsList from '../EventsList/EventsList'
 import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'

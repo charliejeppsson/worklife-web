@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapPin, faClock, faChair } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
 
-import { CANCEL_BOOKING, MY_BOOKINGS } from '../../../graphql/constants'
+import { MY_BOOKINGS } from '../../../graphql/queries/booking'
+import { CANCEL_BOOKING } from '../../../graphql/mutations/booking'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import './MyBookingsListItem.scss'
 

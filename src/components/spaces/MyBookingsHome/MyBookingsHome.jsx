@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 
-import { MY_BOOKINGS } from '../../../graphql/constants'
+import { MY_BOOKINGS } from '../../../graphql/queries/booking'
 import MyBookingsList from '../MyBookingsList/MyBookingsList'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import './MyBookingsHome.scss'

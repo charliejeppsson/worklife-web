@@ -10,7 +10,8 @@ import {
 import DateFnsUtils from '@date-io/date-fns'
 import PropTypes from 'prop-types'
 
-import { CREATE_EVENT, EVENTS } from '../../../../graphql/constants'
+import { EVENTS } from '../../../../graphql/queries/event'
+import { CREATE_EVENT } from '../../../../graphql/mutations/event'
 import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'
 import './EventForm.scss'
 

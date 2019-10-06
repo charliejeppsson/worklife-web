@@ -3,7 +3,8 @@ import { useMutation } from '@apollo/react-hooks'
 import { useAlert } from 'react-alert'
 import PropTypes from 'prop-types'
 
-import { CREATE_COLLAB, COLLABS } from '../../../../graphql/constants'
+import { COLLABS } from '../../../../graphql/queries/collab'
+import { CREATE_COLLAB } from '../../../../graphql/mutations/collab'
 import LoadingSpinner from '../../../LoadingSpinner/LoadingSpinner'
 import './CollabForm.scss'
 

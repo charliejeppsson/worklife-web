@@ -14,7 +14,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
 
-import { CREATE_BOOKING, MY_BOOKINGS } from '../../../graphql/constants'
+import { MY_BOOKINGS } from '../../../graphql/queries/booking'
+import { CREATE_BOOKING } from '../../../graphql/mutations/booking'
 import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import './SpacesListItem.scss'
 
@@ -34,7 +35,10 @@ export default function SpacesListItem(props) {
           // Add the new booking to the myBookings state
           data.myBookings.push(createBooking)
           // Write our extended myBookings list back to the store
-          store.writeQuery({ query: MY_BOOKINGS, data })
+          store.writeQuery({
+            query: MY_BOOKINGS,
+            data: { myBookings: data.myBookings }
+          })
         } catch(err) {
           console.warn(err)
         }
