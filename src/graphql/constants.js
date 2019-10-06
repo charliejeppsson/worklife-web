@@ -129,6 +129,47 @@ export const MY_BOOKINGS = gql`
 `
 
 // Events
+export const ATTEND_EVENT = gql`
+  mutation attendEvent($id: ID!) {
+    attendEvent(id: $id) {
+      event {
+        id
+        title
+        description
+        startTime
+        endTime
+        createdAt
+        space {
+          id
+          name
+          address
+        }
+        attendants {
+          id
+          firstName
+          lastName
+          avatar
+          title
+        }
+        image {
+          id
+          url
+          info
+        }
+        user {
+          id
+          firstName
+          lastName
+          title
+          avatar
+        }
+      }
+      message
+      success
+    }
+  }
+`
+
 export const EVENT = gql`
   query event($id: ID!) {  
     event(id: $id) {

@@ -34,6 +34,23 @@
       font-size: 44px;
     }
 
+    &__btn-container {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      top: 300px;
+      width: 100vw;
+      text-align: center;
+
+      button {
+        height: 50px;
+        font-size: 18px;
+        padding-top: 5px;
+        background-color: $yellow;
+        color: $black;
+      }
+    }
+
     img {
       width: 100vw;
       height: 500px;
