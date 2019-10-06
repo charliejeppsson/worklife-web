@@ -129,6 +129,43 @@ export const MY_BOOKINGS = gql`
 `
 
 // Events
+export const EVENT = gql`
+  query event($id: ID!) {  
+    event(id: $id) {
+      id
+      title
+      description
+      startTime
+      endTime
+      createdAt
+      space {
+        id
+        name
+        address
+      }
+      attendants {
+        id
+        firstName
+        lastName
+        avatar
+        title
+      }
+      image {
+        id
+        url
+        info
+      }
+      user {
+        id
+        firstName
+        lastName
+        title
+        avatar
+      }
+    }
+  }
+`
+
 export const EVENTS = gql`
   query events {
     events {

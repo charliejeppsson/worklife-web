@@ -12,41 +12,11 @@ import './EventDetails.scss'
 export default function EventDetails(props) {
   const eventId = useState(props.location.state.eventId)[0]
 
-  const { loading, error, data } = useQuery(gql`
-    {
-      event(id: ${eventId}) {
-        id
-        title
-        description
-        startTime
-        endTime
-        createdAt
-        space {
-          name
-          address
-        }
-        attendants {
-          id
-          firstName
-          lastName
-          avatar
-          title
-        }
-        image {
-          url
-          info
-        }
-        user {
-          firstName
-          lastName
-          title
-          avatar
-        }
-      }
-    }
-  `)
-
   if (error) return <p>Error :(</p>;
+  const { loading, error, data } = useQuery(
+    EVENT,
+    { variables: { id: eventId } }
+  )
 
   const formatTimestamp = (date) => (
     moment(new Date(date)).format('MMM Do YYYY')
