@@ -5,11 +5,12 @@ import PropTypes from 'prop-types'
 
 import { LOGOUT_MUTATION } from '../../../graphql/constants'
 import AuthContext from '../../../context/authContext'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import './DropdownMenu.scss'
 
 export default function DropdownMenu(props) {
   const { setCurrentUser, setAuthLoading } = useContext(AuthContext)
-  const [logout, { data, loading, error }] = useMutation(LOGOUT_MUTATION)
+  const [logout, { loading, error }] = useMutation(LOGOUT_MUTATION)
   const client = useApolloClient()
 
   const handleLogout = () => {
@@ -26,6 +27,9 @@ export default function DropdownMenu(props) {
         setAuthLoading(false)
       })
   }
+
+  if (loading) { return <li className="DropdownMenu"><LoadingSpinner /></li> }
+  if (error) { return alert.show('An error occurred.') }
 
   return (
     <div ref={props.wrapperRef} className="DropdownMenu">

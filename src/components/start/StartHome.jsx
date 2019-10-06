@@ -12,7 +12,7 @@ export default function StartHome() {
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
   const { authLoading, setAuthLoading, setCurrentUser } = useContext(AuthContext)
-  const [login, { data, loading, error }] = useMutation(LOGIN_MUTATION)
+  const [login, { loading }] = useMutation(LOGIN_MUTATION)
   const alert = useAlert()
 
   const handleLogin = () => {
@@ -39,7 +39,8 @@ export default function StartHome() {
       })
   }
 
-  if (authLoading) { return <LoadingSpinner /> }
+  if (loading || authLoading) { return <LoadingSpinner /> }
+
   return (
     <div className="StartHome__container">
       <div className="StartHome__form">
