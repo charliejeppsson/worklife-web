@@ -57,8 +57,8 @@ export default function EventForm(props) {
     props.closeModal()
   }
 
-  if (loading) { return <li className="SpacesListItem"><LoadingSpinner /></li> }
-  if (error) { return alert.show('The booking could not be created.') }
+  if (loading) { return <li className="EventsListItem"><LoadingSpinner /></li> }
+  if (error) { return alert.show('The event could not be created.') }
 
   return (
     <div ref={props.wrapperRef} className="EventForm__modal">

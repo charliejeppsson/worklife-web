@@ -81,7 +81,11 @@ export default function EventDetails(props) {
               <ContentSignature key={data.event.user.id} user={data.event.user} />
               
               <h2>Attendants</h2>
-              {renderAttendantsList(data.event.attendants)}
+              {
+                data.event.attendants ? 
+                  renderAttendantsList(data.event.attendants)
+                  : <p>No attendants yet.</p> 
+              }
             </div>
           </div>
       }
