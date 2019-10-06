@@ -1,5 +1,63 @@
 import gql from 'graphql-tag'
 
+// Bookings
+export const MY_BOOKINGS = gql`
+  query myBookings {
+    myBookings {
+      id
+      date
+      userId
+      space {
+        id
+        name
+        address
+        city
+        type
+        capacity
+        opensAt
+        closesAt
+        image {
+          url
+          info
+        }
+      }
+    }
+  }
+`
+
+export const CREATE_BOOKING = gql`
+  mutation createBooking($date: Date!, $spaceId: ID!) {
+    createBooking(date: $date, spaceId: $spaceId) {
+      id
+      date
+      userId
+      space {
+        id
+        name
+        address
+        city
+        type
+        capacity
+        opensAt
+        closesAt
+        image {
+          url
+          info
+        }
+      }
+    }
+  }
+`
+
+export const CANCEL_BOOKING = gql`
+  mutation cancelBooking($id: ID!) {
+    cancelBooking(id: $id) {
+      success
+    }
+  }
+`
+
+
 // Collabs
 export const COLLABS = gql`
   query collabs {
@@ -17,10 +75,44 @@ export const COLLABS = gql`
         avatar
       }
       image {
+        id
         url
         info
       }
       user {
+        id
+        firstName
+        lastName
+        title
+        avatar
+      }
+    }
+  }
+`
+
+export const COLLAB = gql`
+  query collab($id: ID!) {
+    collab(id: $id) {
+      id
+      title
+      description
+      duration
+      compensation
+      createdAt
+      participants {
+        id
+        firstName
+        lastName
+        avatar
+        title
+      }
+      image {
+        id
+        url
+        info
+      }
+      user {
+        id
         firstName
         lastName
         title
@@ -58,10 +150,12 @@ export const CREATE_COLLAB = gql`
         avatar
       }
       image {
+        id
         url
         info
       }
       user {
+        id
         firstName
         lastName
         title
@@ -71,80 +165,17 @@ export const CREATE_COLLAB = gql`
   }
 `
 
-// Bookings
-export const CREATE_BOOKING = gql`
-  mutation createBooking($date: Date!, $spaceId: ID!) {
-    createBooking(date: $date, spaceId: $spaceId) {
-      id
-      date
-      userId
-      space {
-        id
-        name
-        address
-        city
-        type
-        capacity
-        opensAt
-        closesAt
-        image {
-          url
-          info
-        }
-      }
-    }
-  }
-`
-
-export const CANCEL_BOOKING = gql`
-  mutation cancelBooking($id: ID!) {
-    cancelBooking(id: $id) {
-      success
-    }
-  }
-`
-
-export const MY_BOOKINGS = gql`
-  query myBookings {
-    myBookings {
-      id
-      date
-      userId
-      space {
-        id
-        name
-        address
-        city
-        type
-        capacity
-        opensAt
-        closesAt
-        image {
-          url
-          info
-        }
-      }
-    }
-  }
-`
-
-// Events
-export const ATTEND_EVENT = gql`
-  mutation attendEvent($id: ID!) {
-    attendEvent(id: $id) {
-      event {
+export const JOIN_COLLAB = gql`
+  mutation joinCollab($id: ID!) {
+    joinCollab(id: $id) {
+      collab {
         id
         title
         description
-        startTime
-        endTime
+        duration
+        compensation
         createdAt
-        space {
-          id
-          name
-          address
-        }
-        attendants {
+        participants {
           id
           firstName
           lastName
@@ -166,6 +197,44 @@ export const ATTEND_EVENT = gql`
       }
       message
       success
+    }
+  }
+`
+
+
+// Events
+export const EVENTS = gql`
+  query events {
+    events {
+      id
+      title
+      description
+      startTime
+      endTime
+      createdAt
+      attendants {
+        id
+        firstName
+        lastName
+        avatar
+      }
+      image {
+        id
+        url
+        info
+      }
+      space {
+        id
+        name
+        address
+      }
+      user {
+        id
+        firstName
+        lastName
+        title
+        avatar
+      }
     }
   }
 `
@@ -195,42 +264,6 @@ export const EVENT = gql`
         id
         url
         info
-      }
-      user {
-        id
-        firstName
-        lastName
-        title
-        avatar
-      }
-    }
-  }
-`
-
-export const EVENTS = gql`
-  query events {
-    events {
-      id
-      title
-      description
-      startTime
-      endTime
-      createdAt
-      attendants {
-        id
-        firstName
-        lastName
-        avatar
-      }
-      image {
-        id
-        url
-        info
-      }
-      space {
-        id
-        name
-        address
       }
       user {
         id
@@ -273,14 +306,17 @@ export const CREATE_EVENT = gql`
         avatar
       }
       image {
+        id
         url
         info
       }
       space {
+        id
         name
         address
       }
       user {
+        id
         firstName
         lastName
         title
@@ -289,6 +325,48 @@ export const CREATE_EVENT = gql`
     }
   }
 `
+
+export const ATTEND_EVENT = gql`
+  mutation attendEvent($id: ID!) {
+    attendEvent(id: $id) {
+      event {
+        id
+        title
+        description
+        startTime
+        endTime
+        createdAt
+        space {
+          id
+          name
+          address
+        }
+        attendants {
+          id
+          firstName
+          lastName
+          avatar
+          title
+        }
+        image {
+          id
+          url
+          info
+        }
+        user {
+          id
+          firstName
+          lastName
+          title
+          avatar
+        }
+      }
+      message
+      success
+    }
+  }
+`
+
 
 // Spaces
 export const SPACES = gql`
