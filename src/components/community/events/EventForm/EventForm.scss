@@ -27,6 +27,7 @@
     max-width: 400px;
 
     label {
+      margin-top: 20px;
       margin-bottom: 5px;
     }
 
@@ -35,7 +36,6 @@
       width: 400px;
       border: none;
       border-radius: 5px;
-      margin-bottom: 20px;
       padding: 5px;
       font-family: $primaryFont;
       font-size: 12px;
@@ -53,12 +53,9 @@
     }
 
     button {
+      margin-top: 40px;
       padding-top: 5px;
       font-size: 14px;
     }
   }
-}
-
-.MuiInput-formControl {
-  margin-bottom: 20px;
 }
