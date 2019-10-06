@@ -13,9 +13,11 @@ export default function CollabInfo(props) {
   const formatDuration = duration => {
     const monthAmount = Math.ceil(duration / 30)
     if (monthAmount === 0) {
-      return 'Indefinitely'
+      return 'Unspecified'
     } else if (monthAmount === 1) {
-      return `${monthAmount} month`
+      return '1 month'
+    } else if (monthAmount === 12) {
+      return '12 months or more' 
     } else {
       return `${monthAmount} months`
     }

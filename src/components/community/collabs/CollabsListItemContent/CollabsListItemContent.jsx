@@ -25,7 +25,7 @@ export default function CollabsListItemContent(props) {
       <CollabInfo duration={collab.duration} compensation={collab.compensation} />
 
       <div className="CollabsListItemContent__attendants">
-        {collabParticipants()}
+        {collab.participants ? collabParticipants() : null}
       </div> 
     </div>
   )

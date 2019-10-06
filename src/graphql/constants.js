@@ -30,6 +30,47 @@ export const COLLABS = gql`
   }
 `
 
+export const CREATE_COLLAB = gql`
+  mutation createCollab(
+    $title: String!,
+    $description: String!,
+    $duration: Int!,
+    $compensation: Int!,
+    $imageUrl: String!
+  ) {
+    createCollab(
+      title: $title,
+      description: $description,
+      duration: $duration,
+      compensation: $compensation,
+      imageUrl: $imageUrl
+    ) {
+      id
+      title
+      description
+      duration
+      compensation
+      createdAt
+      participants {
+        id
+        firstName
+        lastName
+        avatar
+      }
+      image {
+        url
+        info
+      }
+      user {
+        firstName
+        lastName
+        title
+        avatar
+      }
+    }
+  }
+`
+
 // Bookings
 export const CREATE_BOOKING = gql`
   mutation createBooking($date: Date!, $spaceId: ID!) {

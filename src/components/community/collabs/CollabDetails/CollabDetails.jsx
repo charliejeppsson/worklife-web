@@ -80,7 +80,11 @@ export default function CollabDetails(props) {
               <ContentSignature key={data.collab.user.id} user={data.collab.user} />
               
               <h2>Participants</h2>
-              {renderParticipationsList(data.collab.participants)}
+              {
+                data.collab.participants ? 
+                  renderParticipationsList(data.collab.participants)
+                  : <p>No participants yet.</p> 
+              }
             </div>
           </div>
       }
