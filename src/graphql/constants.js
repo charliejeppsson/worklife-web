@@ -1,5 +1,35 @@
 import gql from 'graphql-tag'
 
+// Collabs
+export const COLLABS = gql`
+  query collabs {
+    collabs {
+      id
+      title
+      description
+      duration
+      compensation
+      createdAt
+      participants {
+        id
+        firstName
+        lastName
+        avatar
+      }
+      image {
+        url
+        info
+      }
+      user {
+        firstName
+        lastName
+        title
+        avatar
+      }
+    }
+  }
+`
+
 // Bookings
 export const CREATE_BOOKING = gql`
   mutation createBooking($date: Date!, $spaceId: ID!) {
