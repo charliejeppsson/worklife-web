@@ -223,14 +223,17 @@ export const EVENTS = gql`
         avatar
       }
       image {
+        id
         url
         info
       }
       space {
+        id
         name
         address
       }
       user {
+        id
         firstName
         lastName
         title
@@ -305,6 +308,7 @@ export const SPACES = gql`
       opensAt
       closesAt
       image {
+        id
         url
         info
       }
