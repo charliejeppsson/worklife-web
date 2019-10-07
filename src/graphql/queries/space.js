@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
-export const SPACES = gql`
-  query spaces {
-    spaces {
+export const SEARCH_SPACES = gql`
+  query searchSpaces($name: String, $date: Date!) {
+    searchSpaces(name: $name, date: $date) {
       id
       name
       city
@@ -16,6 +16,7 @@ export const SPACES = gql`
       meals
       opensAt
       closesAt
+      availableSeats
       image {
         id
         url

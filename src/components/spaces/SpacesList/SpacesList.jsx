@@ -1,29 +1,47 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useApolloClient } from '@apollo/react-hooks'
 import moment from 'moment'
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 import PropTypes from 'prop-types'
 
+import { SEARCH_SPACES } from '../../../graphql/queries/space'
+import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import SpacesListItem from '../SpacesListItem/SpacesListItem'
 import './SpacesList.scss'
 
-export default function SpacesList(props) {
+export default function SpacesList() {
+  const todaysDate = moment(new Date()).format('YYYY-MM-DD')
   const [searchTerm, setSearchTerm] = useState('')
-  const [selectedDate, setSelectedDate] = useState(
-    moment(new Date()).format('YYYY-MM-DD')
-  )
-  const [onlyAvailable, setOnlyAvailable] = useState(true)
+  const [selectedDate, setSelectedDate] = useState(todaysDate)
+  const [data, setData] = useState({})
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const client = useApolloClient()
 
-  const { spaces } = props
+  useEffect(() => { performSearch() }, [])
 
-  const listItems = spaces.map(space => (
+  const performSearch = async () => {
+    setLoading(true)
+    const searchResult = await client.query({
+      query: SEARCH_SPACES,
+      variables: { name: searchTerm, date: selectedDate }
+    })
+    setLoading(false)
+    setError(searchResult.error)
+    setData(searchResult.data)
+  }
+
+  const listItems = (spaces) => spaces.map(space => (
     <SpacesListItem key={space.id} space={space} selectedDate={selectedDate} />
   ))
 
   const handleSearch = (e) => {
     e.preventDefault()
-    console.log(`Search term: ${searchTerm}, date: ${moment(selectedDate).format('YYYY-MM-DD')}, onlyAvailable: ${onlyAvailable}`)
+    performSearch()
   }
+
+  if (error) return <p>Error :(</p>
 
   return (
     <div className="SpacesList">
@@ -46,23 +64,21 @@ export default function SpacesList(props) {
           />
         </MuiPickersUtilsProvider>
 
-        <select
-          id="spaces-availability"
-          className="SpacesList__search-form__availability-input"
-          value={onlyAvailable}
-          onChange={(e) => setOnlyAvailable(e.target.value)}
-        >
-          <option value="">-- Please choose an option --</option>
-          <option value={false}>All</option>
-          <option value={true}>Available</option>
-        </select>
-
         <button className="worklife-btn search-btn" onClick={handleSearch}>
           Search
         </button>
       </form>
-
-      <ul className="SpacesList__list">{listItems}</ul>
+      
+      {
+        loading ? <LoadingSpinner /> :
+          <ul className="SpacesList__list">
+            {
+              data.searchSpaces && data.searchSpaces.length ?
+                listItems(data.searchSpaces)
+                : <p>No spaces found :(</p>
+            }
+          </ul>
+      }
     </div>
   )
 }
