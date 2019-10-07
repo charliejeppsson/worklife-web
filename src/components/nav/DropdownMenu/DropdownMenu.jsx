@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
 import { useMutation, useApolloClient } from '@apollo/react-hooks'
 import PropTypes from 'prop-types'
 
@@ -9,7 +8,7 @@ import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
 import './DropdownMenu.scss'
 
 export default function DropdownMenu(props) {
-  const { setCurrentUser, setAuthLoading } = useContext(AuthContext)
+  const { currentUser, setCurrentUser, setAuthLoading } = useContext(AuthContext)
   const [logout, { loading, error }] = useMutation(LOGOUT_MUTATION)
   const client = useApolloClient()
 
@@ -33,7 +32,10 @@ export default function DropdownMenu(props) {
 
   return (
     <div ref={props.wrapperRef} className="DropdownMenu">
-      <Link to="/account">Account</Link>
+      <div className="DropdownMenu__user-info">
+        <p>{currentUser.firstName} {currentUser.lastName}</p>
+        <p className="DropdownMenu__user-info__sub-info">{currentUser.title}</p>
+      </div>
 
       <button onClick={() => handleLogout()}>
         Sign out 

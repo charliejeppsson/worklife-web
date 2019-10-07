@@ -3,6 +3,7 @@
 .DropdownMenu {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   top: 75px;
   right: 38px;
@@ -13,9 +14,17 @@
   border-radius: 5px;
   background-color: $darkGrey;
 
-  a {
-    margin-bottom: 10px;
+  &__user-info {
     font-size: 14px;
+
+    p {
+      margin: 0;
+      margin-bottom: 3px;
+    }
+
+    &__sub-info {
+      font-size: 11px;
+    }
   }
 
   button {
