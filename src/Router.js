@@ -10,7 +10,7 @@ import EventsHome from './components/community/events/EventsHome/EventsHome'
 import EventDetails from './components/community/events/EventDetails/EventDetails'
 import CollabsHome from './components/community/collabs/CollabsHome/CollabsHome'
 import CollabDetails from './components/community/collabs/CollabDetails/CollabDetails'
-import BenefitsHome from './components/benefits/BenefitsHome'
+import BenefitsHome from './components/benefits/BenefitsHome/BenefitsHome'
 import StartHome from './components/start/StartHome'
 
 export default function App(props) {
