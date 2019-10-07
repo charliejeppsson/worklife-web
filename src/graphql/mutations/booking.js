@@ -3,24 +3,28 @@ import gql from 'graphql-tag'
 export const CREATE_BOOKING = gql`
   mutation createBooking($date: Date!, $spaceId: ID!) {
     createBooking(date: $date, spaceId: $spaceId) {
-      id
-      date
-      userId
-      space {
+      booking {
         id
-        name
-        address
-        city
-        type
-        capacity
-        opensAt
-        closesAt
-        image {
+        date
+        userId
+        space {
           id
-          url
-          info
+          name
+          address
+          city
+          type
+          capacity
+          opensAt
+          closesAt
+          image {
+            id
+            url
+            info
+          }
         }
       }
+      message
+      success
     }
   }
 `

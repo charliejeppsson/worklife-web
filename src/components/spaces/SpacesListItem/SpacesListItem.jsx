@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useMutation } from '@apollo/react-hooks'
 import { useAlert } from 'react-alert'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,6 +21,7 @@ import './SpacesListItem.scss'
 
 export default function SpacesListItem(props) {
   const { space, selectedDate } = props
+  const [availableSeats, setAvailableSeats] = useState(space.availableSeats)
   const [createBooking, { loading, error }] = useMutation(CREATE_BOOKING)
   const alert = useAlert()
 
@@ -29,18 +30,22 @@ export default function SpacesListItem(props) {
       variables: { date: selectedDate, spaceId: space.id },
       // Update myBookings list in Apollo cache/store
       update: (store, { data: { createBooking } }) => {
-        try {
-          // Read the myBookings data present in the store
-          const data = store.readQuery({ query: MY_BOOKINGS })
-          // Add the new booking to the myBookings state
-          data.myBookings.push(createBooking)
-          // Write our extended myBookings list back to the store
-          store.writeQuery({
-            query: MY_BOOKINGS,
-            data: { myBookings: data.myBookings }
-          })
-        } catch(err) {
-          console.warn(err)
+        if (createBooking.success) {
+          try {
+            const data = store.readQuery({ query: MY_BOOKINGS })
+            createBooking.booking['availableSeats'] = space.availableSeats - 1
+            data.myBookings.push(createBooking.booking)
+            store.writeQuery({
+              query: MY_BOOKINGS,
+              data: { myBookings: data.myBookings }
+            })
+          } catch(err) {
+            console.warn(err)
+          }
+          setAvailableSeats(availableSeats - 1)
+          alert.show('Booking successful!', { type: 'success' })
+        } else {
+          alert.show(createBooking.message, { type: 'error' })
         }
       }
     })
@@ -82,7 +87,7 @@ export default function SpacesListItem(props) {
 
           <div className="SpacesListItem__content__details">
             <FontAwesomeIcon icon={faChair} />
-            <p>Capacity: {space.capacity}</p> 
+            <p>Availability: {availableSeats}/{space.capacity} seats</p> 
           </div>
 
           <div className="SpacesListItem__content__details">
