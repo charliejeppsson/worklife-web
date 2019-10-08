@@ -34,7 +34,7 @@ export default function SpacesListItem(props) {
           try {
             const data = store.readQuery({ query: MY_BOOKINGS })
             createBooking.booking['availableSeats'] = space.availableSeats - 1
-            data.myBookings.push(createBooking.booking)
+            data.myBookings.unshift(createBooking.booking)
             store.writeQuery({
               query: MY_BOOKINGS,
               data: { myBookings: data.myBookings }
