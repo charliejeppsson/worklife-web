@@ -27,7 +27,6 @@ export default function StartHome() {
           console.log('res.error from login mutation: ', res.errors[0].message)
           alert.show(res.errors[0].message)
         } else {
-          console.log('currentUser from login mutation: ', res.data.login.user)
           setCurrentUser(res.data.login.user)
           localStorage.setItem('accessToken', res.data.login.accessToken)
         }
