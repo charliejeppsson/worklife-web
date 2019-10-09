@@ -32,6 +32,8 @@ export default function SpacesList() {
     setData(searchResult.data)
   }
 
+  console.log('--- SelectedDate: ', selectedDate)
+
   const listItems = (spaces) => spaces.map(space => (
     <SpacesListItem key={space.id} space={space} selectedDate={selectedDate} />
   ))
@@ -58,7 +60,9 @@ export default function SpacesList() {
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <DatePicker
             value={selectedDate}
-            onChange={setSelectedDate}
+            onChange={(newDate) => setSelectedDate(
+              moment(newDate).format('YYYY-MM-DD')
+            )}
             variant="inline"
             disableToolbar
           />
